@@ -1,0 +1,127 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="JavaDoc" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="TOP_LEVEL_CLASS_OPTIONS">
+        <value>
+          <option name="ACCESS_JAVADOC_REQUIRED_FOR" value="none" />
+          <option name="REQUIRED_TAGS" value="" />
+        </value>
+      </option>
+      <option name="INNER_CLASS_OPTIONS">
+        <value>
+          <option name="ACCESS_JAVADOC_REQUIRED_FOR" value="none" />
+          <option name="REQUIRED_TAGS" value="" />
+        </value>
+      </option>
+      <option name="METHOD_OPTIONS">
+        <value>
+          <option name="ACCESS_JAVADOC_REQUIRED_FOR" value="none" />
+          <option name="REQUIRED_TAGS" value="@return@param@throws or @exception" />
+        </value>
+      </option>
+      <option name="FIELD_OPTIONS">
+        <value>
+          <option name="ACCESS_JAVADOC_REQUIRED_FOR" value="none" />
+          <option name="REQUIRED_TAGS" value="" />
+        </value>
+      </option>
+      <option name="IGNORE_DEPRECATED" value="false" />
+      <option name="IGNORE_JAVADOC_PERIOD" value="true" />
+      <option name="IGNORE_DUPLICATED_THROWS" value="false" />
+      <option name="IGNORE_POINT_TO_ITSELF" value="false" />
+      <option name="myAdditionalJavadocTags" value="date" />
+    </inspection_tool>
+    <inspection_tool class="JdAbstractClassShouldStartWithAbstractNaming" enabled="false" level="CRITICAL " enabled_by_default="false" />
+    <inspection_tool class="JdAccessStaticViaInstance" enabled="false" level="BLOCKER " enabled_by_default="false" />
+    <inspection_tool class="JdAccessToNonThreadSafeStaticFieldFromInstance" enabled="false" level="CRITICAL " enabled_by_default="false" />
+    <inspection_tool class="JdArrayNamingShouldHaveBracket" enabled="false" level="MAJOR " enabled_by_default="false" />
+    <inspection_tool class="JdAvoidApacheBeanUtilsCopy" enabled="false" level="BLOCKER " enabled_by_default="false" />
+    <inspection_tool class="JdAvoidCallStaticSimpleDateFormat" enabled="false" level="CRITICAL " enabled_by_default="false" />
+    <inspection_tool class="JdAvoidComplexCondition" enabled="false" level="MAJOR " enabled_by_default="false" />
+    <inspection_tool class="JdAvoidConcurrentCompetitionRandom" enabled="false" level="MAJOR " enabled_by_default="false" />
+    <inspection_tool class="JdAvoidManuallyCreateThread" enabled="false" level="CRITICAL " enabled_by_default="false" />
+    <inspection_tool class="JdAvoidMissUseOfMathRandom" enabled="false" level="MAJOR " enabled_by_default="false" />
+    <inspection_tool class="JdAvoidNegationOperator" enabled="false" level="MAJOR " enabled_by_default="false" />
+    <inspection_tool class="JdAvoidNewDateGetTime" enabled="false" level="BLOCKER " enabled_by_default="false" />
+    <inspection_tool class="JdAvoidPatternCompileInMethod" enabled="false" level="BLOCKER " enabled_by_default="false" />
+    <inspection_tool class="JdAvoidReturnInFinally" enabled="false" level="CRITICAL " enabled_by_default="false" />
+    <inspection_tool class="JdAvoidStartWithDollarAndUnderLineNaming" enabled="false" level="CRITICAL " enabled_by_default="false" />
+    <inspection_tool class="JdAvoidUseTimer" enabled="false" level="BLOCKER " enabled_by_default="false" />
+    <inspection_tool class="JdBooleanPropertyShouldNotStartWithIs" enabled="false" level="CRITICAL " enabled_by_default="false" />
+    <inspection_tool class="JdClassCastExceptionWithSubListToArrayList" enabled="false" level="CRITICAL " enabled_by_default="false" />
+    <inspection_tool class="JdClassCastExceptionWithToArray" enabled="false" level="CRITICAL " enabled_by_default="false" />
+    <inspection_tool class="JdClassMustHaveAuthor" enabled="false" level="MAJOR " enabled_by_default="false" />
+    <inspection_tool class="JdClassNamingShouldBeCamel" enabled="false" level="MAJOR " enabled_by_default="false" />
+    <inspection_tool class="JdCollectionInitShouldAssignCapacity" enabled="false" level="MAJOR " enabled_by_default="false" />
+    <inspection_tool class="JdConcurrentExceptionWithModifyOriginSubList" enabled="false" level="CRITICAL " enabled_by_default="false" />
+    <inspection_tool class="JdConstantFieldShouldBeUpperCase" enabled="false" level="CRITICAL " enabled_by_default="false" />
+    <inspection_tool class="JdCountDownShouldInFinally" enabled="false" level="MAJOR " enabled_by_default="false" />
+    <inspection_tool class="JdCyclomaticComplexityBlock" enabled="false" level="BLOCKER (超高复杂度)" enabled_by_default="false" />
+    <inspection_tool class="JdCyclomaticComplexityCritical" enabled="false" level="CRITICAL (高复杂度)" enabled_by_default="false" />
+    <inspection_tool class="JdCyclomaticComplexityMajor" enabled="false" level="MAJOR (中复杂度)" enabled_by_default="false" />
+    <inspection_tool class="JdCyclomaticComplexityWarning" enabled="false" level="WARNING (低复杂度)" enabled_by_default="false" />
+    <inspection_tool class="JdDeprecation" enabled="false" level="CRITICAL " enabled_by_default="false" />
+    <inspection_tool class="JdDontModifyInForeachCircle" enabled="false" level="BLOCKER " enabled_by_default="false" />
+    <inspection_tool class="JdEnumConstantsMustHaveComment" enabled="false" level="CRITICAL " enabled_by_default="false" />
+    <inspection_tool class="JdEqualsAvoidNull" enabled="false" level="CRITICAL " enabled_by_default="false" />
+    <inspection_tool class="JdExceptionClassShouldEndWithException" enabled="false" level="CRITICAL " enabled_by_default="false" />
+    <inspection_tool class="JdIbatisMethodQueryForList" enabled="false" level="MAJOR " enabled_by_default="false" />
+    <inspection_tool class="JdJDAndroidSafeALIOSS" enabled="false" level="高危风险" enabled_by_default="false" />
+    <inspection_tool class="JdJDAndroidSafeAllowAllHoseName" enabled="false" level="中危风险" enabled_by_default="false" />
+    <inspection_tool class="JdJDAndroidSafeAllowBackup" enabled="false" level="低危风险" enabled_by_default="false" />
+    <inspection_tool class="JdJDAndroidSafeCheckTrust" enabled="false" level="中危风险" enabled_by_default="false" />
+    <inspection_tool class="JdJDAndroidSafeCryptoLength" enabled="false" level="中危风险" enabled_by_default="false" />
+    <inspection_tool class="JdJDAndroidSafeDatabase" enabled="false" level="中危风险" enabled_by_default="false" />
+    <inspection_tool class="JdJDAndroidSafeDebuggable" enabled="false" level="低危风险" enabled_by_default="false" />
+    <inspection_tool class="JdJDAndroidSafeECBModule" enabled="false" level="中危风险" enabled_by_default="false" />
+    <inspection_tool class="JdJDAndroidSafePermission" enabled="false" level="低危风险" enabled_by_default="false" />
+    <inspection_tool class="JdJDAndroidSafeReadFile" enabled="false" level="中危风险" enabled_by_default="false" />
+    <inspection_tool class="JdJDAndroidSafeSharedPre" enabled="false" level="中危风险" enabled_by_default="false" />
+    <inspection_tool class="JdJDAndroidSafeWeakEncrypt" enabled="false" level="中危风险" enabled_by_default="false" />
+    <inspection_tool class="JdJDAndroidSafeWebviewError" enabled="false" level="中危风险" enabled_by_default="false" />
+    <inspection_tool class="JdJDAndroidSavePasswd" enabled="false" level="低危风险" enabled_by_default="false" />
+    <inspection_tool class="JdJDAndroidWebviewFileAccess" enabled="false" level="低危风险" enabled_by_default="false" />
+    <inspection_tool class="JdJDAvoidComplexCondition" enabled="false" level="WARNING " enabled_by_default="false" />
+    <inspection_tool class="JdJDClassCast" enabled="false" level="CRITICAL " enabled_by_default="false" />
+    <inspection_tool class="JdJDImageUtilInflate" enabled="false" level="CRITICAL " enabled_by_default="false" />
+    <inspection_tool class="JdJDLog" enabled="false" level="MAJOR " enabled_by_default="false" />
+    <inspection_tool class="JdJDMethodBodyCount" enabled="false" level="WARNING " enabled_by_default="false" />
+    <inspection_tool class="JdJDMethodParamsCount" enabled="false" level="MAJOR " enabled_by_default="false" />
+    <inspection_tool class="JdJDSafeDruid" enabled="false" level="中危风险" enabled_by_default="false" />
+    <inspection_tool class="JdJDSafeFastJson" enabled="false" level="中危风险" enabled_by_default="false" />
+    <inspection_tool class="JdJDSafeHessianInput" enabled="false" level="中危风险" enabled_by_default="false" />
+    <inspection_tool class="JdJDSafeJavaObject" enabled="false" level="中危风险" enabled_by_default="false" />
+    <inspection_tool class="JdJDSafeQx" enabled="false" level="中危风险" enabled_by_default="false" />
+    <inspection_tool class="JdJDSafeSqlInjectJava" enabled="false" level="高危风险" enabled_by_default="false" />
+    <inspection_tool class="JdJDSafeSqlInjectXML" enabled="false" level="高危风险" enabled_by_default="false" />
+    <inspection_tool class="JdJDStringConnect" enabled="false" level="WARNING " enabled_by_default="false" />
+    <inspection_tool class="JdJDStrutsDev" enabled="false" level="中危风险" enabled_by_default="false" />
+    <inspection_tool class="JdJDSystemOutPrint" enabled="false" level="WARNING " enabled_by_default="false" />
+    <inspection_tool class="JdJDXXE" enabled="false" level="中危风险" enabled_by_default="false" />
+    <inspection_tool class="JdJdMethodAndFieldMastHaveComment" enabled="false" level="MAJOR " enabled_by_default="false" />
+    <inspection_tool class="JdLowerCamelCaseVariableNaming" enabled="false" level="CRITICAL " enabled_by_default="false" />
+    <inspection_tool class="JdMapOrSetKeyShouldOverrideHashCodeEquals" enabled="false" level="CRITICAL " enabled_by_default="false" />
+    <inspection_tool class="JdMethodReturnWrapperType" enabled="false" level="MAJOR " enabled_by_default="false" />
+    <inspection_tool class="JdMissingOverrideAnnotation" enabled="false" level="BLOCKER " enabled_by_default="false" />
+    <inspection_tool class="JdNeedBrace" enabled="false" level="BLOCKER " enabled_by_default="false" />
+    <inspection_tool class="JdPackageNaming" enabled="false" level="MAJOR " enabled_by_default="false" />
+    <inspection_tool class="JdPojoMustOverrideToString" enabled="false" level="MAJOR " enabled_by_default="false" />
+    <inspection_tool class="JdPojoMustUsePrimitiveField" enabled="false" level="MAJOR " enabled_by_default="false" />
+    <inspection_tool class="JdPojoNoDefaultValue" enabled="false" level="MAJOR " enabled_by_default="false" />
+    <inspection_tool class="JdRemoveCommentedCode" enabled="false" level="MAJOR " enabled_by_default="false" />
+    <inspection_tool class="JdServiceOrDaoClassShouldEndWithImpl" enabled="false" level="CRITICAL " enabled_by_default="false" />
+    <inspection_tool class="JdSwitchStatement" enabled="false" level="CRITICAL " enabled_by_default="false" />
+    <inspection_tool class="JdTestClassShouldEndWithTestNaming" enabled="false" level="MAJOR " enabled_by_default="false" />
+    <inspection_tool class="JdThreadLocalShouldRemove" enabled="false" level="CRITICAL " enabled_by_default="false" />
+    <inspection_tool class="JdThreadPoolCreation" enabled="false" level="BLOCKER " enabled_by_default="false" />
+    <inspection_tool class="JdThreadShouldSetName" enabled="false" level="CRITICAL " enabled_by_default="false" />
+    <inspection_tool class="JdTransactionMustHaveRollback" enabled="false" level="MAJOR " enabled_by_default="false" />
+    <inspection_tool class="JdUndefineMagicConstant" enabled="false" level="MAJOR " enabled_by_default="false" />
+    <inspection_tool class="JdUnsupportedExceptionWithModifyAsList" enabled="false" level="CRITICAL " enabled_by_default="false" />
+    <inspection_tool class="JdUpperEll" enabled="false" level="BLOCKER " enabled_by_default="false" />
+    <inspection_tool class="JdUseQuietReferenceNotation" enabled="false" level="MAJOR " enabled_by_default="false" />
+    <inspection_tool class="JdUseRightCaseForDateFormat" enabled="false" level="CRITICAL " enabled_by_default="false" />
+    <inspection_tool class="JdWrapperTypeEquality" enabled="false" level="BLOCKER " enabled_by_default="false" />
+  </profile>
+</component>
