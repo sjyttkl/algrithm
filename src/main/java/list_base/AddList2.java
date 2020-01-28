@@ -19,10 +19,8 @@ public class AddList2 {
         Node head1 = Node.createList();
         Node head2 = Node.createList();
         Node.PrintList(addList1(head1,head2));
+        Node.PrintList(addList2(head1,head2));
     }
-
-
-
     //方法1：利用栈结构求解
     public static Node addList1(Node head1, Node head2) {
         Stack<Integer> s1 = new Stack<Integer>();
@@ -34,7 +32,7 @@ public class AddList2 {
         }
         while (head2 != null) {
             s2.push(head2.value);
-            head2 = head1.next;
+            head2 = head2.next;
         }
         Node node = null;
         Node pre = null;
@@ -45,11 +43,11 @@ public class AddList2 {
         while (!s1.isEmpty() || !s2.isEmpty()) {
             n1 = s1.isEmpty() ? 0 : s1.pop();
             n2 = s2.isEmpty() ? 0 : s2.pop();
-            n = n1 + n2 + ca;
+            n = n1 + n2 + ca;//ca是进位 保留
             pre = node;//低位
-            node = new Node(n % 10);
-            node.next = pre;//高位指向低位
-            ca = n / 10;
+            node = new Node(n % 10);//对个位进行 创建新节点
+            node.next = pre;//高位指向低位，反转链表都免了。
+            ca = n / 10;//去除他的 十进制位置
         }
         if (ca == 1) {//两表都遍历完了，还要判断是否有进位
             pre = node;

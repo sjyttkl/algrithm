@@ -18,6 +18,7 @@ import java.util.HashMap;
 // 进阶：不使用额外的数据结构，只用有限几个变量，且在时间复杂度为 O(N) 内完成原问题要实现的函数。
 
 public class CopyListWithRand {
+    //使用额外 map数据结构进行 复制随机链表。
     public static RandNode copyListWithRand1(RandNode head) {
         HashMap<RandNode, RandNode> map = new HashMap<RandNode, RandNode>();
         RandNode cur = head;//cur头节点，用于遍历链表
@@ -40,31 +41,31 @@ public class CopyListWithRand {
         }
         RandNode cur = head;
         RandNode next = null;
-        // copy node and link to every node
+        // copy node and link to every node 最终变成：1 1 2 2 3 3 4 4 5 5 6 6
         while (cur != null) {
             next = cur.next;
             cur.next = new RandNode(cur.value);
             cur.next.next = next;
-            cur = next;
+            cur = next;//指针移动到下一个节点
         }
         cur = head;
         RandNode curCopy = null;
         // set copy node rand
         while (cur != null) {
-            next = cur.next.next;
-            curCopy = cur.next;
-            curCopy.rand = cur.rand != null ? cur.rand.next : null;
-            cur = next;
+            next = cur.next.next;//原始节点
+            curCopy = cur.next;//上个循环复制的节点
+            curCopy.rand = cur.rand != null ? cur.rand.next : null;//这里也是复制rand节点，next是之前复制的节点
+            cur = next;//指针移动到下一个节点
         }
-        RandNode res = head.next;
-        cur = head;
+        RandNode res = head.next;//复制过的头节点
+        cur = head; //原始头节点
         // split
-        while (cur != null) {
-            next = cur.next.next;//
-            curCopy = cur.next;
-            cur.next = next;
+        while (cur != null) {   //1 1 2 2 3 3 4 4 5 5 6 6
+            next = cur.next.next;//原始节点，下一个节点
+            curCopy = cur.next;//复制节点相连,
+            cur.next = next;//原始节点相连
             curCopy.next = next != null ? next.next : null;
-            cur = next;
+            cur = next;//指针移动到下一个节点
         }
         return res;
     }
@@ -113,7 +114,7 @@ public class CopyListWithRand {
         head.next.next.next.next.next.rand = head.next.next.next; // 6 -> 4
 
         printRandLinkedList(head);
-        res1 = copyListWithRand1(head);
+        res1 = copyListWithRand2(head);
         printRandLinkedList(res1);
         res2 = copyListWithRand2(head);
         printRandLinkedList(res2);
