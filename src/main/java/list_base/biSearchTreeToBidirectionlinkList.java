@@ -99,33 +99,32 @@ public class biSearchTreeToBidirectionlinkList {
             return head;
         }
     }
+
     //--------------------------------------------------------------------
     //打印双向链表
-    public static void PrintList(TreeNode head)
-    {
-        while (head!=null)
-        {
-            System.out.print(head.val+" ");
-            head=head.right;
+    public static void PrintList(TreeNode head) {
+        while (head != null) {
+            System.out.print(head.val + " ");
+            head = head.right;
         }
         System.out.println();
     }
-    public static void main(String []args)
-    {
+
+    public static void main(String[] args) {
 
         //建立二叉搜索树
-        TreeNode node=new TreeNode(6);
-        node.left=new TreeNode(4);
-        node.right=new TreeNode(7);
-        node.left.left=new TreeNode(2);
-        node.left.right=new TreeNode(5);
-        node.right.right=new TreeNode(9);
-        node.left.left.left=new TreeNode(1);
-        node.left.left.right=new TreeNode(3);
-        node.right.right.left=new TreeNode(8);
+        TreeNode node = new TreeNode(6);
+        node.left = new TreeNode(4);
+        node.right = new TreeNode(7);
+        node.left.left = new TreeNode(2);
+        node.left.right = new TreeNode(5);
+        node.right.right = new TreeNode(9);
+        node.left.left.left = new TreeNode(1);
+        node.left.left.right = new TreeNode(3);
+        node.right.right.left = new TreeNode(8);
 
 //        TreeNode mode=twoList(node);
-        TreeNode mode=biSearchTreeToBidirectionlinkList(node);
+        TreeNode mode = biSearchTreeToBidirectionlinkList(node);
         PrintList(mode);
 
     }
