@@ -37,7 +37,7 @@ public class Judge {
 
     //解法：利用栈
     public static boolean judge(Node head) {
-        Stack<Integer> stack = new Stack<>();
+        Stack<Integer> stack = new Stack<Integer>();
         Node r = head;
         while (r != null) {
             stack.push(r.value);
@@ -55,7 +55,7 @@ public class Judge {
     //优化一下只用一半栈  :ListNode r = head.next; ListNode tmp = head;r走一步，tmp走两步，最后r的位子为后半部分位置
     public static boolean judge2(Node head) {
         if (head == null || head.next == null) return true;
-        Stack<Integer> stack = new Stack<>();
+        Stack<Integer> stack = new Stack<Integer>();
         Node r = head;
         Node tmp = head.next; //这里写  head 也可以：Node tmp = head;
         while (tmp.next != null && tmp.next.next != null) {
