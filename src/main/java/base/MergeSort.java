@@ -14,9 +14,8 @@ public class MergeSort {
         if (arr == null || arr.length < 2) {
             return;
         }
-        sortProcess(arr, 0, arr.length - 1);
+        sortProcess(arr, 0, arr.length - 1);//传入的是标记位
     }
-
     public static void sortProcess(int[] arr, int L, int R) {
         if (L == R) {
             return;
@@ -26,7 +25,6 @@ public class MergeSort {
         sortProcess(arr, mid + 1, R);//T(N/2)
         merge(arr, L, mid, R);//O(N)
     }
-
     public static void merge(int[] arr, int L, int mid, int R) {
         int[] help = new int[R - L + 1];//和arr一样长度的数组
         int i = 0;

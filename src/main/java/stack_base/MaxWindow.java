@@ -1,5 +1,8 @@
 package stack_base;
 
+import com.sun.scenario.effect.impl.state.LinearConvolveKernel;
+import sun.awt.image.ImageWatched;
+
 import java.util.Arrays;
 import java.util.LinkedList;
 
@@ -30,7 +33,7 @@ public class MaxWindow {
         LinkedList<Integer> queue = new LinkedList<Integer> ();//有序栈
 
         for (int i = 0; i < arr.length; i++) {
-            while (!queue.isEmpty() && arr[queue.peekLast()] < arr[i]) {
+            while (!queue.isEmpty() && arr[queue.peekLast()] < arr[i]) {//保持最大
                 queue.pollLast();
             }
             queue.addLast(i);

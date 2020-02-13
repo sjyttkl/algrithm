@@ -79,6 +79,13 @@ public class QuickSort {
         }
     }
 
+    public static void quickSort22(int [] arr,int low ,int high){
+        if(low<high){
+            int partition = partition2(arr,low,high);
+            quickSort22(arr,low,partition-1);
+            quickSort22(arr,partition+1,high);
+        }
+    }
     public static int partition(int[] arr, int low, int high) {
         int num = arr[low];// 我们取第一个作为基准值，而且基准值开始是在最低位
         while (low < high) {

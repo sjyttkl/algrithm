@@ -31,7 +31,7 @@ public class SmallSum {
         if (l == r){
             return 0;
         }
-        int mid = l + ((r - l) >> 1);//获取中间数
+        int mid = l + ((r - l) >> 1);//获取中间数 int mid = (L + R) / 2;
         return mergeSort(arr, l, mid) + mergeSort(arr, mid+1, r) + merge(arr, l, mid, r);
     }
 

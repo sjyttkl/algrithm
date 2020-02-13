@@ -7,7 +7,7 @@ import java.util.Stack;
 /**
  * Create with: tree_base
  * author: sjyttkl
- * E-mail: 695492835@qq.co
+ * E-mail: 695492835@qq.com
  * date: 2020/1/30 3:49
  * version: 1.0
  * description:分别用递归和非递归的方式实现二叉树先序、中序和后序遍历
@@ -55,56 +55,61 @@ public class TreeOrder {
             Stack<TreeNode> stack = new Stack<TreeNode>();
             stack.add(root);
             while (!stack.isEmpty()) {
-                root = stack.pop();
-                if (root.right != null)
-                    stack.add(root.right);
-                if (root.left != null)
-                    stack.add(root.left);
+                TreeNode node = stack.pop();
+                System.out.println(node.value + "访问根节点");
+                if (node.right != null)
+                    stack.add(node.right);//先放右孩子
+                if (node.left != null)
+                    stack.add(node.left);//后方左孩子
             }
         }
     }
-
-    //    中序遍历
-//1、申请一个栈stack
-//2、先把头结点压入栈中，再把他的左边界压入栈中
-//3、重复2
+        // 中序遍历
+    //1、申请一个栈stack
+    //2、先把头结点压入栈中，再把他的左边界压入栈中
+    //3、重复2
     public void innerUncer(TreeNode root) {
+        System.out.println("中序遍历: ");
         if (root != null) {
             Stack<TreeNode> stack = new Stack<TreeNode>();
-            stack.push(root);
-            if (!stack.isEmpty() && root != null) {
+            while (!stack.isEmpty() || root != null) {
                 if (root != null) {
                     stack.push(root);
                     root = root.left;
                 } else {
                     root = stack.pop();
-                    System.out.println(root.value + "");
+                    System.out.print(root.value + " ");
                     root = root.right;
                 }
             }
         }
+        System.out.println();
     }
 
-    //    后序遍历
+    // 后序遍历
 //    1、申请两个栈，将头结点压入栈stack中弹出stack中的顶点压入stack1中，
 //    2、若头结点有孩子节点，则压入stack中，直到无左右孩子，此时
 //    3、弹出stack栈中的顶点压入stack1中，重复2
-    public void posUncer(TreeNode root) {
+    public void posUncer(TreeNode root){
+        System.out.println("后续遍历： ");
         if (root != null) {
             Stack<TreeNode> stack = new Stack<TreeNode>();
             Stack<TreeNode> stack1 = new Stack<TreeNode>();
             stack.push(root);
-            if (!stack.isEmpty()) {
+            while (!stack.isEmpty()) {
                 stack1.push(stack.pop());
                 if (root.left != null) {
                     stack.push(root.left);
                 }
-                if (root.right != null)
+                if (root.right != null){
                     stack.push(root.right);
+                }
             }
             while (!stack1.isEmpty()) {
-                System.out.println(stack1.pop().value + "");
+                System.out.print(stack1.pop().value + " ");
             }
         }
+        System.out.println();
     }
+
 }

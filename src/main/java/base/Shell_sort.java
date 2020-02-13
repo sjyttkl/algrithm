@@ -14,40 +14,22 @@ public class Shell_sort {
     /**
      * @param args
      */
-    public static void main(String[] args)
-    {
-        int[] x = new int[]	{ 6, 2, 4, 1, 5, 9 };
+    public static void main(String[] args) {
+        int[] x = new int[]{6, 2, 4, 1, 5, 9};
         System.out.println("开始之前" + Arrays.toString(x));
         shell_sort(x, x.length);
         System.out.println("开始之后" + Arrays.toString(x));
     }
 
-    public static void shell_sort2(int [] unsorted ,int len){
-        int group ,i ,j ,temp;
-        for(group = len/2;group>0 ;group/=2){
-            for(i = group;i<len;i++){
-                for(j = i-group;j>=0;j-=group){
-                    if(unsorted[j]> unsorted[j+group]){
-
-                    }
-                }
-            }
-        }
-    }
-    private static void shell_sort(int[] unsorted, int len)
-    {
+    private static void shell_sort(int[] unsorted, int len) {
         int group, i, j, temp;
         //取增量
-        for (group = len / 2; group > 0; group /= 2)
-        {
+        for (group = len / 2; group > 0; group /= 2) {
             //无须序列
-            for (i = group; i < len; i++)
-            {
+            for (i = group; i < len; i++) {
                 //有序序列
-                for (j = i - group; j >= 0; j -= group)
-                {
-                    if (unsorted[j] > unsorted[j + group])
-                    {
+                for (j = i - group; j >= 0; j -= group) {
+                    if (unsorted[j] > unsorted[j + group]) {
                         temp = unsorted[j];
                         unsorted[j] = unsorted[j + group];
                         unsorted[j + group] = temp;

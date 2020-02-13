@@ -25,11 +25,9 @@ public class ReverseRecursion {
         return last;
     }
 
-    public static void reverse(Stack<Integer> stack)
-    {
-        if(stack.isEmpty())
-        {
-            return ;
+    public static void reverse(Stack<Integer> stack) {
+        if (stack.isEmpty()) {
+            return;
         }
         int i = getAndRemoveLastElement(stack);  // 1   2  3   4
         reverse(stack);
@@ -45,9 +43,8 @@ public class ReverseRecursion {
 
         reverse(stack);
         System.out.println();
-        while(!stack.isEmpty())
-        {
-            System.out.print(stack.pop()+" ");
+        while (!stack.isEmpty()) {
+            System.out.print(stack.pop() + " ");
         }
     }
 

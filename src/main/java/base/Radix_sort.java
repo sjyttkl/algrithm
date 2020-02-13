@@ -19,14 +19,11 @@ public class Radix_sort {
         System.out.println("开始之前" + Arrays.toString(array));
         radix_sort(array, 10, 10);
         System.out.println("开始之后" + Arrays.toString(array));
-
     }
-
     private static void radix_sort(int[] unsorted, int array_x, int array_y){
-
-        for (int i = 0; i < array_x/* 最大数字不超过999999999...(array_x个9) */; i++){
+        for (int i = 0; i < array_x/* 最大数字不超过999999999...(array_x个9) */; i++){//基数
             int[][] bucket = new int[array_x][array_y];
-            for (int j = 0; j < unsorted.length; j++){
+            for (int j = 0; j < unsorted.length; j++){//数字进行个位、十位、百位
                 int temp = (unsorted[j] / (int) Math.pow(10, i)) % 10;
                 for (int l = 0; l < array_y; l++){
                     if (bucket[temp][l] == 0){

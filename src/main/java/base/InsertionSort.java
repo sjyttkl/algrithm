@@ -12,33 +12,32 @@ package base;
 public class InsertionSort {
 
 
-    public static void insertionSort(int[] arr){
-        if (arr == null || arr.length < 2){
+    public static void insertionSort(int[] arr) {
+        if (arr == null || arr.length < 2) {
             return;
         }
-        for (int i = 1; i < arr.length; i++){
-            for (int j = i-1; j >= 0 && arr[j] > arr[j+1]; j--){
-                swap(arr, j, j+1);
+        for (int i = 1; i < arr.length; i++) {
+            for (int j = i - 1; j >= 0 && arr[j] > arr[j + 1]; j--) {
+                swap(arr, j, j + 1);
             }
         }
     }
-    public static void swap(int[] arr,int i,int j)
-    {
+
+    public static void swap(int[] arr, int i, int j) {
         int temp;
         temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
     }
-    public static void show(int [] arr)
-    {
-        for(int i=0;i<arr.length;i++)
-        {
-            System.out.print(arr[i]+" ");
+
+    public static void show(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
         }
     }
-    public static void main(String [] args)
-    {
-        int arr[] = {6,4,2,5,8,9};
+
+    public static void main(String[] args) {
+        int arr[] = {6, 4, 2, 5, 8, 9};
         insertionSort(arr);
         show(arr);
     }

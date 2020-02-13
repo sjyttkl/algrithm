@@ -66,11 +66,9 @@ public class SmallEqualBig {
                     endBig.next = head;
                     endBig = head;
                 }
-
             }
             head = next;
         }
-
         if (endSmall != null) {
             endSmall.next = equal;
             endEqual = endEqual == null ? endSmall : endEqual;
