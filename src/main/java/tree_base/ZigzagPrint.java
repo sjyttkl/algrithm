@@ -62,17 +62,7 @@ public class ZigzagPrint {
         if (head == null) {
             return;
         }
-        /**
-         System.out.print(head.value);
-         if(head.right!=null)
-         {
-         System.out.print(head.right.value);
-         }
-         if(head.left!=null)
-         {
-         System.out.print(head.left.value);
-         }
-         */
+
         //运用双端队列的方式存储(基数行左->右,偶数行右->左)
         Deque<TreeNode> dq = new LinkedList<TreeNode>();  //双端队列
         int level = 1;
