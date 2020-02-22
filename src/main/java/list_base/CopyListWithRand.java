@@ -34,7 +34,6 @@ public class CopyListWithRand {
         }
         return map.get(head);
     }
-
     public static RandNode copyListWithRand2(RandNode head) {
         if (head == null) {
             return null;
@@ -114,7 +113,7 @@ public class CopyListWithRand {
         head.next.next.next.next.next.rand = head.next.next.next; // 6 -> 4
 
         printRandLinkedList(head);
-        res1 = copyListWithRand2(head);
+        res1 = copyListWithRand1(head);
         printRandLinkedList(res1);
         res2 = copyListWithRand2(head);
         printRandLinkedList(res2);

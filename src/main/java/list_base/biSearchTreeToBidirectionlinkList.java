@@ -1,5 +1,7 @@
 package list_base;
 
+import sun.reflect.generics.tree.Tree;
+
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -95,7 +97,7 @@ public class biSearchTreeToBidirectionlinkList {
             rightE.right = head;
             return rightE;
         } else {
-            head.right = head;
+            head.right = head;//这样做能快速找到双链表的头节点（方便做左右子树的相连），
             return head;
         }
     }

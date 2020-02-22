@@ -28,21 +28,6 @@ public class MaxRectangle {
         System.out.println(getMaxSubMatrix(map));
     }
 
-    public static int getMaxSubMatrix2(int[][] map) {
-        if (map == null || map.length == 0 || map[0].length == 0) {
-            return 0;
-        }
-        int maxArea = 0;
-        int[] height = new int[map[0].length];
-        for (int i = 0; i < map.length; i++) {
-            for (int j = 0; j < map[0].length; j++) {
-                height[j] = map[i][j] == 0 ? 0 : height[j] + 1;
-            }
-            maxArea = Math.max(maxRecFromBottom(height), maxArea);
-        }
-        return maxArea;
-    }
-
     public static int getMaxSubMatrix(int[][] map) {
         if (map == null || map.length == 0 || map[0].length == 0) {
             return 0;
@@ -53,10 +38,11 @@ public class MaxRectangle {
             for (int j = 0; j < map[0].length; j++) {
                 height[j] = map[i][j] == 0 ? 0 : height[j] + 1;  //计算出每个矩形的高度
             }
-            maxArea = Math.max(maxRecFromBottom(height), maxArea);
+            maxArea = Math.max(maxRecFromBottom(height), maxArea);//每层，每层计算
         }
         return maxArea;
     }
+
     public static int maxRecFromBottom(int[] height) {
         if (height == null || height.length == 0) {
             return 0;

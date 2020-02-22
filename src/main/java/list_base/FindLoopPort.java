@@ -32,7 +32,6 @@ public class FindLoopPort {
         node6.next = node4;
         System.out.println(findLoopPort(node).value);
     }
-
     public static Node findLoopPort(Node head) {
         Node slow = head;
         Node fast = head;
@@ -48,7 +47,7 @@ public class FindLoopPort {
             return null;
         }
         //如果链表有环，则将slow设置指向链表头，此时fast指向相遇点，然后同时开始移动，直到两个指针相遇
-        slow = head;
+        fast = head;
         while (slow != fast) {
             slow = slow.next;
             fast = fast.next;

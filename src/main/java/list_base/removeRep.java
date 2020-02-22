@@ -1,5 +1,7 @@
 package list_base;
 
+import sun.awt.image.PNGImageDecoder;
+
 import java.util.HashSet;
 
 /**
@@ -25,7 +27,7 @@ public class removeRep {
         HashSet<Integer> hs = new HashSet<Integer>();
         Node pre = head;
         Node cur = head.next;
-        hs.add(cur.value);//头结点直接加到链表
+        hs.add(head.value);//头结点直接加到链表
         while (cur != null) {
             if (!hs.contains(cur.value)) {
                 hs.add(cur.value);

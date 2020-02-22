@@ -18,7 +18,7 @@ import java.util.Stack;
  * 介绍两种方法：
  *
  * 方法一  利用栈结构
- *   1、从左到右便利链表，如果栈的大小不等于k，就将节点不断压入栈中
+ *   1、从左到右遍历链表，如果栈的大小不等于k，就将节点不断压入栈中
  *   2、当栈大小第一次到达k，凑齐了k个节点进行逆序。然后弹出，并且连接。第一组逆序完成后，记录新的头，同时第一组最后一个（原头）连接下一个节点
  * 
  *方法二、不需要栈结构，在原链表中直接调整 *
@@ -36,7 +36,7 @@ public class reverseKNodes {
         Stack<Node> stack = new Stack<Node>();
         Node newHead = head;
         Node cur = head;
-        Node pre = null;
+        Node pre = null;//当前k个节点最前一个节点
         Node next = null;
         while (cur != null) {
             next = cur.next;//当前节点的下一个节点
@@ -66,7 +66,7 @@ public class reverseKNodes {
     }
 
     //方法二
-    public Node reverseKNodea2(Node head, int k){
+    public Node reverseKNode2(Node head, int k){
 
         if(k<2){
             return head;
@@ -81,7 +81,7 @@ public class reverseKNodes {
             if(count==k){
                 start=pre==null?head:pre.next;
                 head=pre==null?cur:head;
-                resign2(pre,start,cur,next);
+                resign2(pre,start,cur,next);// left,start,end,right;
                 pre=start;
                 count=0;
             }

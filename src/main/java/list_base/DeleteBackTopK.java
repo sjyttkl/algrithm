@@ -11,11 +11,12 @@ package list_base;
 public class DeleteBackTopK {
     public static void main(String args[]) {
         Node head = Node.createList();
-        Node.PrintList(removeLastKthNode(head,1));
+        Node.PrintList(removeLastKthNode(head, 1));
 
         DoubleNode doubleList = DoubleNode.createDoubleList();
-        DoubleNode.PrintList(removeLastKthNode(doubleList,1));
+        DoubleNode.PrintList(removeLastKthNode(doubleList, 1));
     }
+
     //双链表 删除倒数第 k个值
     public static DoubleNode removeLastKthNode(DoubleNode head, int lastKth) {
         if (head == null || lastKth < 1) {
@@ -39,7 +40,7 @@ public class DeleteBackTopK {
                 curr = curr.next;   //这里剔除需要删除第K值的前一个。
             }
             next = curr.next.next;
-            if(next != null){ //防止，下一node 为null 这样pre 就不存在。
+            if (next != null) { //防止，下一node 为null 这样pre 就不存在。
                 curr.next.next.pre = curr;
             }
             curr.next = next;

@@ -19,12 +19,33 @@ package list_base;
  * 如果在区间 （0，3/5]， 删除节点3；
  * 如果在区间 （0，4/5]， 删除节点4；
  * 如果在区间 （0，1]， 删除节点5；
- * 可以看出，是在r = ( a / b ) * n 然后将n向上取整得到的节点位置的方法；
+ * 可以看出，是在r = ( a* n / b )  然后将r向上取整得到的节点位置的方法；乘以 n  是把结果限定在 n 范围内
  * 所以根本是在于 求出 r的值并且运用Math.ceil()方法向上取整来得到准确的节点值，然后遍历链表删除即可；
  */
 public class RemoveByRatio {
-    public static Node removeByRatio(Node head, int a, int b) {
 
+    //删除中间节点，如果是偶数则删除中间前一个节点，如果是奇数则删除中间一个节点
+    public static Node removeMidNode(Node head){
+        if(head==null || head.next ==null){
+            return head;
+        }
+        if(head.next.next==null){
+            return head.next;
+        }
+        Node pre =head;
+        Node cur = head.next.next;
+        while(cur.next !=null&& cur.next.next!=null){
+            pre = pre.next;
+            cur = cur.next.next;
+        }
+        pre.next = pre.next.next;
+        return head;
+    }
+
+
+
+
+    public static Node removeByRatio(Node head, int a, int b) {
         int length = 0;
         Node curr =head;
         while(curr!=null){

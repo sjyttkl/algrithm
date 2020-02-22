@@ -10,7 +10,7 @@ package list_base;
  * 问题描述：给定头节点head，两个整数from和to，要求在单向链表上把第from到to个节点之间的部分进行反转
  * 对输入的from和to进行合理性的判断：
  * 1. 遍历链表求出len，1<=from<=to<=len；
- * 同时确定好from的前一个几点和to的下一个节点；
+ * 同时确定好from的前一个节点和to的下一个节点；
  * 2. 对head节点的重定义：
  * 当在from是要从头开始反转的时候，head应该等于to节点； 若不是则保持原来的节点；
  * 3.对from和to之间的节点进行反转，参考04问题反转链表思想；
@@ -44,8 +44,8 @@ public class ReversePart {
         Node node2 = null;
         Node next = null;
         node1 = fpre == null?head:fpre.next;
-        node2 = node1.next;
-        node1.next = tpos;
+        node2 = node1.next; //这里是 from 下一个节点
+        node1.next = tpos;//from下一个节点连接 后面to+1 的节点
         while(node2!=tpos){
             next = node2.next ;
             node2.next = node1;

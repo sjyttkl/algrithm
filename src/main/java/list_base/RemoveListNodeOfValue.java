@@ -35,7 +35,7 @@ public class RemoveListNodeOfValue {
      * 方法二，不使用任何容器，直接调整的方法，其时间复杂度是 O(N)，空间复杂度是O(1)
      */
     public Node removeValue2(Node head, int num) {
-        while (head != null) {
+        while (head != null) {//这里主要是防止头节点就是需要删除的节点
             if (head.value != num) {
                 break;
             }

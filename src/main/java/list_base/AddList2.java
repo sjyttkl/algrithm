@@ -15,12 +15,13 @@ import java.util.Stack;
  */
 public class AddList2 {
     //两个单链表生成相加链表
-    public static void main(String args[]){
+    public static void main(String args[]) {
         Node head1 = Node.createList();
         Node head2 = Node.createList();
-        Node.PrintList(addList1(head1,head2));
-        Node.PrintList(addList2(head1,head2));
+        Node.PrintList(addList1(head1, head2));
+        Node.PrintList(addList2(head1, head2));
     }
+
     //方法1：利用栈结构求解
     public static Node addList1(Node head1, Node head2) {
         Stack<Integer> s1 = new Stack<Integer>();
@@ -44,7 +45,7 @@ public class AddList2 {
             n1 = s1.isEmpty() ? 0 : s1.pop();
             n2 = s2.isEmpty() ? 0 : s2.pop();
             n = n1 + n2 + ca;//ca是进位 保留
-            pre = node;//低位
+            pre = node;//低位,pre指指针往前移动一位
             node = new Node(n % 10);//对个位进行 创建新节点
             node.next = pre;//高位指向低位，反转链表都免了。
             ca = n / 10;//去除他的 十进制位置

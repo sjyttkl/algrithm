@@ -23,6 +23,7 @@ package list_base;
  * 4. 将两个链表按照题目合并起来
  */
 public class MergeLR {
+    //这个方法是获得 右边一半链表的头节点
     public void relocate(Node head) {
         if (head == null || head.next == null)
             return;
@@ -35,7 +36,6 @@ public class MergeLR {
         mid.next = null;
         mergeLR(head, right);
     }
-
     public void mergeLR(Node left, Node right) {
         Node next = null;
         while (left.next != null) {

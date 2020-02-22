@@ -13,7 +13,9 @@ package list_base;
  */
 public class SelectSortList {
     public static Node selectSort(Node head) {
-        if (head == null) return head;
+        if (head == null) {
+            return head;
+        }
         Node cur = head;
         Node tail = null;//排序部分的尾部
         Node minNode = null;//最小值节点
@@ -22,7 +24,7 @@ public class SelectSortList {
             //1、每次在未排序的链表中找到最小值节点，然后把个节点从中删除，
             //删除过程中保证未排序部分的链表在结构上不断开，需要找到最小节点的前一个节点
             minNode = cur;
-            minPre = getMinPre(cur);
+            minPre = getMinPre(cur);//返回最小值前一个节点
             //最小节点不是当前未排序链表的头结点，从未排序列中删除最小节点
             if (minPre != null) {
                 minNode = minPre.next;

@@ -43,7 +43,7 @@ public class MaxMinusMin {
                 }
                 qmin.addLast(R);
                 if (arr[qmax.peekFirst()] - arr[qmin.peekFirst()] > num) {
-                    break;
+                    break;//一旦找到右边 最大值，则R不动，继续滑动左边的值
                 }
                 R++;
             }//while

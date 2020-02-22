@@ -9,7 +9,7 @@ package list_base;
  * description:将单向链表按某值划分成左边小，中间相等，右边大的形式
  */
 //普通方法，将链表节点放到数组然后partition(快速排序）找到  某值的位置
-// 进阶方法，将链表划分成三个子链表，然后合并
+// 进阶方法，将链表划分成三个子链表（要求，三个部分和原来的顺序保持一致)，然后合并
 // 进阶思路：将原链表中的所有节点依次划分为是三个链表，
 // 分别为small代表做部分，equal代表中间部分，big代表左部分，例如：链表7->9->1->8->5->2->5，pivot =5，在划分之后，samll，equal，big分别为：
 // small：1->2->null
@@ -30,56 +30,6 @@ public class SmallEqualBig {
         Node.PrintList(head);
 
     }
-
-    public static Node lisPartition2(Node head, int privot) {
-        Node small = null;
-        Node equal = null;
-        Node big = null;
-        Node endSmall = null;
-        Node endEqual = null;
-        Node endBig = null;
-        Node next = null;
-        while (head != null) {
-            next = head.next;
-            head.next = null;
-            if (head.value < privot) {
-                if (small == null) {
-                    small = head;
-                    endSmall = head;
-                } else {
-                    endSmall.next = head;
-                    endSmall = head;
-                }
-            } else if (head.value == privot) {
-                if (equal == null) {
-                    equal = head;
-                    endEqual = head;
-                } else {
-                    endEqual.next = head;
-                    endEqual = head;
-                }
-            } else if (head.value > privot) {
-                if (big == null) {
-                    big = head;
-                    endBig = head;
-                } else {
-                    endBig.next = head;
-                    endBig = head;
-                }
-            }
-            head = next;
-        }
-        if (endSmall != null) {
-            endSmall.next = equal;
-            endEqual = endEqual == null ? endSmall : endEqual;
-        }
-        if (endEqual != null) {
-            endEqual.next = big;
-
-        }
-        return small != null ? small : equal != null ? equal : big;
-    }
-
     //    时间复杂度O(n),额外空间复杂度O(1)
     public static Node listPartition(Node head, int pivot) {
         Node small = null;    //小的头
