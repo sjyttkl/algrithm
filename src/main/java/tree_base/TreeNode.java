@@ -29,4 +29,31 @@ class Query{
         this.o1 = o1;
         this.o2 = o2;
     }
+
+}
+//哈夫曼树独有的节点
+class Huff_Node implements  Comparable<Huff_Node>{
+    char ch; // 字符
+    int freq; // 权值
+    boolean isLeaf;  // 是否是叶子节点
+    Huff_Node left, right;  // 父节点的左节点和右节点
+
+    // 初始化一个带权值的叶子节点
+    public Huff_Node(char ch, int freq){
+        this.ch = ch;
+        this.freq = freq;
+        this.isLeaf = true;
+    }
+
+    // 构建一个节点，带左右节点
+    public Huff_Node(Huff_Node left, Huff_Node right, int freq){
+        this.left = left;
+        this.right = right;
+        this.freq = freq;
+        this.isLeaf = false;
+    }
+    @Override
+    public int compareTo(Huff_Node o) {
+        return this.freq - o.freq;
+    }
 }

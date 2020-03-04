@@ -19,7 +19,6 @@ public class LongestPathSum {
         sumMap.put(0, 0); // important,
         return preOrder(head, sum, 0, 1, 0, sumMap);
     }
-
     public static int preOrder(TreeNode head, int sum, int preSum, int level,
                                int maxLen, HashMap<Integer, Integer> sumMap) {
         if (head == null) {

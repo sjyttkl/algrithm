@@ -17,7 +17,6 @@ public class IsBalance {
         getHeight(node, 1, res);
         return res[0];
     }
-
     public static int getHeight(TreeNode head, int level, boolean[] res) {
         if (head == null) {
             return level;

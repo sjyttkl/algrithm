@@ -36,7 +36,7 @@ import sun.reflect.generics.tree.Tree;
  * 按照标准1打印：1，2，4，7，11，13，14，15，16，12，10，6，3
  * 按照标准2打印: 1，2，4，7，13，14，15，16，10，6，3
  * --------------------------------------------------------------------
-
+ * <p>
  * 时间复杂度 O(n) 空间复杂度O(h)  h为树的高度，详细请看图片
  */
 public class PrintEdgeNodes {
@@ -57,7 +57,7 @@ public class PrintEdgeNodes {
         //打印右节点但不是左节点的
 
         for (int i = edgeMap.length - 1; i != -1; i--) {
-            if (edgeMap[i][0] != edgeMap[i][1]) {
+            if (edgeMap[i][0] != edgeMap[i][1]) {//这是防止头节点被打印了两次
                 System.out.print(edgeMap[i][1].value + " ");
             }
         }
@@ -70,6 +70,7 @@ public class PrintEdgeNodes {
         }
         return Math.max(getHeight(h.left, l + 1), getHeight(h.right, l + 1));
     }
+
     public static void setEdgeMap(TreeNode h, int l, TreeNode[][] edgeMap) {
         if (h == null) {
             return;
