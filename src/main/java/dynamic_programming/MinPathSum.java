@@ -47,11 +47,11 @@ public class MinPathSum {
     /**
      * 借助于m*1或者1*n的辅助空间,这里利用了压缩空间的方式
      * 时间复杂度：O(M*N) ,空间复杂度O(min{M,N})
-     * @return
      *
+     * @return
      */
-    public static int getMinPathSum2(int nums[][]){
-        if(nums == null || nums.length == 0 || nums[0] == null || nums[0].length == 0){
+    public static int getMinPathSum2(int nums[][]) {
+        if (nums == null || nums.length == 0 || nums[0] == null || nums[0].length == 0) {
             return 0;
         }
         int more = Math.max(nums.length, nums[0].length); //得到行与列的较大值为more
@@ -59,16 +59,16 @@ public class MinPathSum {
         boolean rowmore = more == nums.length; //行数是不是大于列数
         int arr[] = new int[less]; //辅助空间仅为行或者列的最小值
         arr[0] = nums[0][0];
-        for(int i = 1; i < less; i++){
-            arr[i] = arr[i-1] + (rowmore ? nums[0][i] : nums[i][0]);
+        for (int i = 1; i < less; i++) {
+            arr[i] = arr[i - 1] + (rowmore ? nums[0][i] : nums[i][0]);
         }
-        for(int i = 1; i < more; i++){
+        for (int i = 1; i < more; i++) {
             arr[0] = arr[0] + (rowmore ? nums[i][0] : nums[0][i]);
-            for(int j = 1; i < less; j++){
-                arr[j] = Math.min(arr[j-1], arr[j]) + (rowmore ? nums[i][j]:nums[j][i]);
+            for (int j = 1; j < less; j++) {
+                arr[j] = Math.min(arr[j - 1], arr[j]) + (rowmore ? nums[i][j] : nums[j][i]);
             }
         }
-        return arr[less-1];
+        return arr[less - 1];
     }
 
 }

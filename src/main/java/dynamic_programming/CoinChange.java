@@ -24,12 +24,15 @@ import java.util.Arrays;
  *
  */
 public class CoinChange {
+    public static void main(String args[]){
+        System.out.println(coinChange3(new int[] {1,2,5},11));
+    }
     //暴力法[超出时间限制]
-    public int coinChange(int[] coins, int amount) {
+    public static int coinChange(int[] coins, int amount) {
         return coinChange(0, coins, amount);
     }
 
-    private int coinChange(int idxCoin, int[] coins, int amount) {
+    private static int coinChange(int idxCoin, int[] coins, int amount) {
         if (amount == 0)
             return 0;
         if (idxCoin < coins.length && amount > 0) {
@@ -49,12 +52,12 @@ public class CoinChange {
 
     // Time Limit Exceeded
     //========
-    public int coinChange2(int[] coins, int amount) {
+    public static int coinChange2(int[] coins, int amount) {
         if (amount < 1) return 0;
         return coinChange(coins, amount, new int[amount]);
     }
 
-    private int coinChange(int[] coins, int rem, int[] count) {
+    private static int coinChange(int[] coins, int rem, int[] count) {
         if (rem < 0) return -1;
         if (rem == 0) return 0;
         if (count[rem - 1] != 0) return count[rem - 1];
@@ -69,7 +72,7 @@ public class CoinChange {
     }
 
 
-    public int coinChange3(int[] coins, int amount) {
+    public static int coinChange3(int[] coins, int amount) {
         int max = amount + 1;
         int[] dp = new int[amount + 1];
         Arrays.fill(dp, max);
