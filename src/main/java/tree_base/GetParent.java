@@ -75,7 +75,6 @@ public class GetParent {
 //结构一：建立二叉树中每个节点对应的父节点信息，是一张哈希表
 class Record1 {
     private HashMap<TreeNode, TreeNode> map;
-
     public Record1(TreeNode head) {
         map = new HashMap<>();
         if (head != null) {
@@ -98,7 +97,7 @@ class Record1 {
         setMap(head.right);
     }
 
-    public TreeNode query(TreeNode o1, TreeNode o2) {
+       public TreeNode query(TreeNode o1, TreeNode o2) {
         HashSet<TreeNode> path = new HashSet<TreeNode>();
         while (map.containsKey(o1)) {
             path.add(o1);

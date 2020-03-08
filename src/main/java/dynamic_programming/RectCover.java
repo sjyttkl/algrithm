@@ -9,26 +9,24 @@ package dynamic_programming;
  * description:
  * 我们可以用2*1的小矩形横着或者竖着去覆盖更大的矩形。请问用n个2*1的小矩形无重叠地覆盖一个2*n的大矩形，总共有多少种方法？
  * 首先来看分析：
- *状态递推：
+ * 状态递推：
  * 第一步竖着放一个f(i-1)
  * 第一步横着放一个f(i-2)
- *f(i) = f(i-1) + f(i-2)
+ * f(i) = f(i-1) + f(i-2)
  * 初始化；
  * f(0) = 0
  * f(1) = 1
  * f(2) =2
- *
- *
  */
 public class RectCover {
-    public static int rectCover(int number){
-        if(number<=0){
+    public static int rectCover(int number) {
+        if (number <= 0) {
             return 0;
         }
-        if(number ==1){
-            return  1;
+        if (number == 1) {
+            return 1;
         }
-        if(number==2){
+        if (number == 2) {
             return 2;
         }
         int res = 2;

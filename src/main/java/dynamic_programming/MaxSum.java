@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 /**
  * Create with: dynamic_programming
- * author: songdongdong
- * E-mail: songdongdong@jd.com
+ * author: sjyttkl
+ * E-mail: 695492835@qq.com
  * date: 2020/2/23 23:55
  * version: 1.0
  * description:

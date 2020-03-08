@@ -10,7 +10,9 @@ import java.util.HashMap;
  * E-mail: 695492835@qq.com
  * date: 2020/2/12 12:26
  * version: 1.0
- * description:给定一棵二叉树的头结点head，求二叉树中符合搜索二叉树的最大拓扑结构(节点最多）的大小,返回节点数
+ * description:给定一棵二叉树的头结点head，求二叉树中符合搜索二叉树的最大拓扑结构（满足搜索二叉树性质最大节点数）的大小,返回节点数
+ * <p>
+ * 注意：最大拓扑结构：表示树的跨度最大，那意味着根节点的跨度最大。
  */
 public class BSTTopologySize {
     //方法1，时间复杂度O(n^2)
@@ -81,18 +83,23 @@ public class BSTTopologySize {
         int rightMax = posOrder(h.right, recordMap);
         modifyRecordMap(h.left, h.value, recordMap, true);//左子树
         modifyRecordMap(h.right, h.value, recordMap, false); //右子树
-        int l = 0;
-        int r = 0;
-        if (h.left != null && recordMap.containsKey(h.left)) {
-            Record left = recordMap.get(h.left);
-            l = left.l + left.r + 1;//左子树贡献值
-        }
-        if (h.right != null && recordMap.containsKey(h.right)) {
-            Record right = recordMap.get(h.right);
-            r = right.l + right.r + 1;//右子树贡献值
-        }
-        recordMap.put(h, new Record(l, r));//当前节点的贡献值
-        return Math.max(l + r + 1, Math.max(leftMax, rightMax));//判断当前节点贡献值，和左右子树那个大。
+
+        Record left = recordMap.get(h.left);
+        Record right = recordMap.get(h.right);
+        int lbst = left == null ? 0 : left.l + left.r + 1;//左子树贡献值
+        int rbst = right == null ? 0 : right.l + right.r + 1;//右子树贡献值
+//        int l = 0;
+//        int r = 0;
+//        if (h.left != null && recordMap.containsKey(h.left)) {
+//            Record left = recordMap.get(h.left);
+//            l = left.l + left.r + 1;
+//        }
+//        if (h.right != null && recordMap.containsKey(h.right)) {
+//            Record right = recordMap.get(h.right);
+//            r = right.l + right.r + 1;
+//        }
+        recordMap.put(h, new Record(lbst, rbst));//当前节点的贡献值
+        return Math.max(lbst + rbst + 1, Math.max(leftMax, rightMax));//判断当前节点贡献值，和左右子树那个大。
     }
 
     /**
@@ -114,7 +121,6 @@ public class BSTTopologySize {
 
         } else {//符合搜索二叉树的结构，左子树比父节点小，右子树比父节点大。
             minus = modifyRecordMap(b ? cur.right : cur.left, h, recordMap, b);//这里只需检查左子树的右边节点是否小于 父节点即可。判断是否符合搜索二叉树
-
             Record curRecord = recordMap.get(cur);
             if (b) {//右子树不符合
                 curRecord.r -= minus;

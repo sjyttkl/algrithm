@@ -76,12 +76,12 @@ public class IsBST {
      * * *思路:
      * 1. 如果有右孩子，没有左孩子，那肯定不是完全二叉树
      * 2. 当第一次发现左右两个孩子不是双全的时候，后面遍历到的节点全部都是叶节点，否则返回false
-     * *流程
+     * *流程:层次遍历的流程
      * 1. 判断head是否为null，如果为null返回true，否则创建一个队列和创建一个布尔值leaf，表示判断是否开启叶子阶段
      * 2. 当队列不为null时，从队列弹出一个数，然后获取左右节点。
      * 3. 判断：如果左孩子为null，右孩子不为null，或者开启叶子判断并且左孩子节点或者右孩子节点不为null，则返回false。
      * 4. 如果左节点不为null，加入队列。如果右节点不为null，加入队列。
-     * 5. 如果左节点为null或者右节点为null，则开启叶子判断。
+     * 5. 如果右节点为null，则开启叶子判断。
      */
     public static boolean isCBT(TreeNode head) {
         if (head == null) {
@@ -104,10 +104,13 @@ public class IsBST {
             }
             if (r != null) {
                 queue.offer(r);
-            }
-            if (l == null || r == null) {
+            }else{
                 leaf = true;
             }
+
+//            if (l == null || r == null) {
+//                leaf = true;
+//            }
         }
         return true;
     }

@@ -9,7 +9,7 @@ import java.util.Map;
  * E-mail: 695492835@qq.com
  * date: 2020/2/23 16:31
  * version: 1.0
- * description:
+ * description:先序、中序、后序数字两两结合重构二叉树
  */
 public class ReConstructBinaryTree {
 
@@ -42,7 +42,7 @@ public class ReConstructBinaryTree {
                 return null;
             }
             Map<Integer, Integer> map = new HashMap<>();
-            for (int i = 0; i < in.length; i++) {
+            for (int i = 0; i < in.length; i++) {//还是把中序放进去。
                 map.put(in[i], i);
             }
             return posIn(in, 0, in.length - 1, pos, 0, pos.length - 1, map);

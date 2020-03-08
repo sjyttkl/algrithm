@@ -11,12 +11,14 @@ import sun.reflect.generics.tree.Tree;
  * description: 判断是否为平衡二叉树
  */
 public class IsBalance {
+
     public static boolean isBalance(TreeNode node) {
         boolean[] res = new boolean[1];
         res[0] = true;//
         getHeight(node, 1, res);
         return res[0];
     }
+
     public static int getHeight(TreeNode head, int level, boolean[] res) {
         if (head == null) {
             return level;

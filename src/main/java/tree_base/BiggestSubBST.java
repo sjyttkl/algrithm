@@ -35,12 +35,12 @@ public class BiggestSubBST {
         int value = head.value;// 头节点的值
         TreeNode left = head.left;// 左子树的头节点
         TreeNode right = head.right;// 右子树的头节点
-        TreeNode lBST = posOrder(left, record);
-        int lSize = record[0];
+        TreeNode lBST = posOrder(left, record); //返回左子树符合要求的 头节点
+        int lSize = record[0];//左子树的节点数量
         int lMin = record[1];
         int lMax = record[2];
-        TreeNode rBST = posOrder(right, record);
-        int rSize = record[0];
+        TreeNode rBST = posOrder(right, record);//返回右子树符合要求的 头节点
+        int rSize = record[0]; //右子树的节点数量
         int rMin = record[1];
         int rMax = record[2];
         // 保存当前子树中的最大值与最小值，不是只保存左子树的最大值与右子树的最小值

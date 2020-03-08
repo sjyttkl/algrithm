@@ -83,7 +83,7 @@ public class FindErrNodes {
         TreeNode e2P = parents[1];
         TreeNode e2L = e2.left;
         TreeNode e2R = e2.right;
-        if(e1 == head){
+        if(e1 == head){ //e1 为头的情况
             if(e1 == e2P){
                 e1.left = e2L;
                 e1.right = e2R;
@@ -103,7 +103,7 @@ public class FindErrNodes {
                 e1.right = e2R;
             }
             head = e2;
-        }else if(e2 == head){
+        }else if(e2 == head){  //e2为头的情况
             if(e2 == e1P){
                 e2.left = e1L;
                 e2.right = e1R;
@@ -123,8 +123,8 @@ public class FindErrNodes {
                 e2.right = e1R;
             }
             head = e1;
-        }else{
-            if(e1 == e2P){
+        }else{  //  e1 、e2都不为根节点、
+            if(e1 == e2P){ //e1 为e2 的父节点的情况
                 if(e1P.left == e1){
                     e1P.left = e2;
                     e1.left = e2L;
@@ -138,7 +138,7 @@ public class FindErrNodes {
                     e2.left = e1L;
                     e2.right = e1;
                 }
-            }else if(e2 == e1P){
+            }else if(e2 == e1P){  // e2 为e1 父节点的情况
                 if(e2P.left == e2){
                     e2P.left = e1;
                     e2.left = e1L;
@@ -153,7 +153,7 @@ public class FindErrNodes {
                     e1.right = e2R;
                 }
             }else{
-                if(e1P.left == e1){
+                if(e1P.left == e1){ //e1 和e2 既不是相互的父节点，也不是耕街道
                     if(e2P.left == e2){
                         e1.left = e2L;
                         e1.right = e2R;

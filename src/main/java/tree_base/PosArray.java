@@ -60,7 +60,6 @@ public class PosArray {
         }
         return posToArray(arr, 0, arr.length - 1);
     }
-
     public static TreeNode posToArray(int[] arr, int start, int end) {
         if (start > end) {
             return null;

@@ -9,6 +9,7 @@ import sun.reflect.generics.tree.Tree;
  * date: 2020/2/15 0:54
  * version: 1.0
  * description: 判断t1树中是否有与t2树拓扑结构完全相同的子树 时间复杂度：O（M+N)
+ * 注意这里是拓扑结构，意思是不能少一个左子树或者右子树，必须完整，这里和 包含关系不一样；比包含关系更严谨
  */
 public class IsContainSubTree {
 
@@ -29,7 +30,7 @@ public class IsContainSubTree {
     }
 
     // KMP
-    public static int  getIndexOf(String s, String m) {
+    public static int getIndexOf(String s, String m) {
         if (s == null || m == null || m.length() < 1 || s.length() < m.length()) {
             return -1;
         }
@@ -69,30 +70,28 @@ public class IsContainSubTree {
                 next[pos++] = 0;
             }
         }
-
-
         return next;
     }
-    public static void  main(String[] args)
-    {
-        TreeNode h1=new TreeNode(1);
-        h1.left=new TreeNode(2);
-        h1.right=new TreeNode(3);
-        h1.left.left=new TreeNode(4);
-        h1.left.right=new TreeNode(5);
-        h1.right.left=new TreeNode(6);
-        h1.right.right=new TreeNode(7);
-        h1.left.left.right=new TreeNode(8);
-        h1.left.right.left=new TreeNode(9);
 
-        TreeNode h2=new TreeNode(2);
-        h2.left=new TreeNode(4);
-        h2.right=new TreeNode(5);
-        h2.left.right=new TreeNode(8);
+    public static void main(String[] args) {
+        TreeNode h1 = new TreeNode(1);
+        h1.left = new TreeNode(2);
+        h1.right = new TreeNode(3);
+        h1.left.left = new TreeNode(4);
+        h1.left.right = new TreeNode(5);
+        h1.right.left = new TreeNode(6);
+        h1.right.right = new TreeNode(7);
+        h1.left.left.right = new TreeNode(8);
+        h1.left.right.left = new TreeNode(9);
+
+        TreeNode h2 = new TreeNode(2);
+        h2.left = new TreeNode(4);
+        h2.right = new TreeNode(5);
+        h2.left.right = new TreeNode(8);
         //h2.right.left=new TreeNode(9);
 
 
-        System.out.println(isSubTree(h1,h2));
+        System.out.println(isSubTree(h1, h2));
 
 
     }
