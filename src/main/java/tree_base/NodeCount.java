@@ -22,7 +22,6 @@ public class NodeCount {
         }
         return search(root, 1, mostLeftNodeH(root, 1));
     }
-
     public static int search(TreeNode root, int h, int H) {
         if (h == H) {  // 说明已经到最后一层了，那么就是node就是叶节点
             return 1;
