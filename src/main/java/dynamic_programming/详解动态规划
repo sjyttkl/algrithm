@@ -1,4 +1,6 @@
 https://blog.csdn.net/flowing_wind/article/details/81949689
+https://mp.weixin.qq.com/s/Y6hQHj77RQ7k1j4wibdn7A
+
 首先学习动态规划，我们的先知道什么是动态规划？
 算法导论这本书是这样介绍这个算法的，动态规划与分治方法类似，都是通过组合子问题的解来来求解原问题的。
 再来了解一下什么是分治方法，以及这两者之间的差别，分治方法将问题划分为互不相交的子问题，递归的求解子问题，
