@@ -51,7 +51,7 @@ public class MinCoins {
         for (int j = 1; j <= aim; j++) {
             dp[0][j] = max;
             if (j - arr[0] >= 0 && dp[0][j - arr[0]] != max) {
-                //aim>arr[0]，且j是arr[0]的倍数
+                //aim>arr[0]，且j是arr[0]的倍数  , j-arr[0] 是检测出是否存在余数（在前面的数据列里）
                 dp[0][j] = dp[0][j - arr[0]] + 1;
             }
         }
@@ -60,7 +60,7 @@ public class MinCoins {
             for (int j = 1; j <= aim; j++) {
                 left = max;
                 if (j - arr[i] >= 0 && dp[i][j - arr[i]] != max) {
-                    left = dp[i][j - arr[i]] + 1;
+                    left = dp[i][j - arr[i]] + 1; //计算出 是否存在 余数
                 }
                 dp[i][j] = Math.min(left, dp[i - 1][j]);
                 //一般情况，dp[i][j]=min{ dp[i-1][j], dp[i][j-arr[i]]+1 }
