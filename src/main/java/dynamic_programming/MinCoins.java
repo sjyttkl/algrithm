@@ -34,6 +34,13 @@ public class MinCoins {
         System.out.println(minCoins2(m, 20));//4
         System.out.println(minCoins2(m, 0));//0
         System.out.println(minCoins2(new int[]{5, 3}, 2));//-1
+
+
+        //换钱币 升级版本--要求 arr数组里的零花钱 ，只能用一次
+        System.out.println(minCoins3(m, 10));//4
+        System.out.println(minCoins4(m, 10));//4
+
+
     }
 
     //换钱的最小货币数
@@ -101,5 +108,60 @@ public class MinCoins {
         }
         return dp[aim] != max ? dp[aim] : -1;
     }
+
+    //第三种算法：换钱币算法 升级版本，arr数组里的零用钱币只能用一次,时间复杂度为O(N×aim),空间复杂度为O(N×aim)
+    public static int minCoins3(int[] arr, int aim) {
+        if (arr == null || arr.length == 0 || aim < 0) {
+            return -1;
+        }
+        int n = arr.length;
+        int max = Integer.MAX_VALUE;
+        int[][] dp = new int[n][aim + 1];
+        for (int j = 1; j <= aim; j++) {//表示找的钱数为 0 时，需要的最少张数，钱数为0的时候，完全不需要任何货币
+            dp[0][j] = max;
+        }
+        if (arr[0] <= aim) { //第一行，表示 只能使用 一张 arr[0] 货币的情况下
+            dp[0][arr[0]] = 1;
+        }
+        int leftup = 0; //左上角某个位置
+        for (int i = 1; i < n; i++) {
+            for (int j = 1; j <= aim; j++) {
+                leftup = max;
+                if (j - arr[i] >= 0 && dp[i - 1][j - arr[i]] != max) {
+                    leftup = dp[i - 1][j - arr[i]] + 1;
+                }
+                dp[i][j] = Math.min(leftup, dp[i - 1][j]);
+            }
+        }
+        return dp[n - 1][aim] != max ? dp[n - 1][aim] : -1;
+    }
+
+    //第三种算法：换钱币算法 升级版本 - 空间压缩，时间复杂度为O(N×aim),空间复杂度为O(aim)
+    public static int minCoins4(int[] arr, int aim) {
+        if (arr == null || arr.length == 0 || aim < 0) {
+            return -1;
+        }
+        int n = arr.length;
+        int max = Integer.MAX_VALUE;
+        int[] dp = new int[aim + 1];
+        for (int j = 1; j <= aim; j++) {
+            dp[j] = max;
+        }
+        if (arr[0] <= aim) {
+            dp[arr[0]] = 1;
+        }
+        int leftup = 0; //左上角某个位置的值
+        for (int i = 1; i < n; i++) {
+            for (int j = aim; j > 0; j--) {
+                leftup = max;
+                if (j - arr[i] >= 0 && dp[j - arr[i]] != max) {
+                    leftup = dp[j - arr[i]] + 1;
+                }
+                dp[j] = Math.min(leftup, dp[j]);
+            }
+        }
+        return dp[aim] != max ? dp[aim] : -1;
+    }
+
 
 }
