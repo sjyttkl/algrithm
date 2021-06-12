@@ -18,6 +18,7 @@ package dynamic_programming;
  *    Viterb采用了动态规划的思想，利用后向指针递归地计算到达当前状态路径中的最可能（局部最优）路径。
  *    要理解，看wiki的一个动态图。
  *    https://en.wikipedia.org/wiki/File:Viterbi_animated_demo.gif
+ * https://www.zhihu.com/question/20136144
  *    求解最可能的隐状态序列是HMM的三个典型问题之一，通常用维特比算法解决。
  *    维特比算法就是求解HMM上的最短路径（-log(prob)，也即是最大概率）的算法。
  * <p>
@@ -50,45 +51,48 @@ public class Viterbi {
      * @param trans_p 转移概率（隐状态）
      * @param emit_p  发射概率 （隐状态表现为显状态的概率）
      * @return 最可能的序列
+     * 计算得到最大概率的隐状态，然后保存最佳状态转移位置。对于每个观察值，先计算对应的可能的隐状态
+     * 在当前 观察序列 的情况下，最优的隐藏序列是多少？
      */
-    public static int[] compute(int[] obs, int[] states, double[] start_p, double[][] trans_p, double[][] emit_p) {
-        double[][] V = new double[obs.length][states.length];
-        int[][] path = new int[states.length][obs.length];
 
-        for (int y : states) {
-            V[0][y] = start_p[y] * emit_p[y][obs[0]];
-            path[y][0] = y;
+    public static int[] compute(int[] observation, int[] states, double[] start_p, double[][] trans_p, double[][] emit_p) {
+        double[][] V = new double[observation.length][states.length]; //obs * states 记录表示 当前 观察序列情况下，最优概率是多少？路径保存在下面
+        int[][] path = new int[states.length][observation.length]; // states * obs  ,由上个概率值，计算最优路径，
+
+        for (int state1 : states) {
+            V[0][state1] = start_p[state1] * emit_p[state1][observation[0]];
+            path[state1][0] = state1;
         }
-
-        for (int t = 1; t < obs.length; ++t) {
-            int[][] newpath = new int[states.length][obs.length];
-
-            for (int y : states) {
+        //依次每个观察序列，并计算当前观察序列值 下，每个隐藏层的最大概率，最终记录最优路径
+        for (int obs = 1; obs < observation.length; ++obs) {
+            int[][] newpath = new int[states.length][observation.length];
+            //遍历每个隐状态，计算状态转移到当前状态的概率,得到最大概率状态
+            for (int targetState : states) {
                 double prob = -1;
                 int state;
-                for (int y0 : states) {
-                    double nprob = V[t - 1][y0] * trans_p[y0][y] * emit_p[y][obs[t]];
-                    if (nprob > prob) {
-                        prob = nprob;
-                        state = y0;
+                for (int preState : states) { //这里表示的是前一个状态
+                    double nProb = V[obs - 1][preState] * trans_p[preState][targetState] * emit_p[targetState][observation[obs]];
+                    if (nProb > prob) {
+                        prob = nProb;
+                        state = preState; //前一个状态
                         // 记录最大概率
-                        V[t][y] = prob;
+                        V[obs][targetState] = nProb;
                         // 记录路径
-                        System.arraycopy(path[state], 0, newpath[y], 0, t);
-                        newpath[y][t] = y;
+                        System.arraycopy(path[state], 0, newpath[targetState], 0, obs);//这是为了记录 曾经的初始化数据 ,//这里的 targetState 一定会小于等于 observation 的长度
+                        newpath[targetState][obs] = targetState;////最大概率状态转移记录
                     }
                 }
             }
 
             path = newpath;
         }
-
+        //回溯路径，找到最后状态
         double prob = -1;
         int state = 0;
-        for (int y : states) {
-            if (V[obs.length - 1][y] > prob) {
-                prob = V[obs.length - 1][y];
-                state = y;
+        for (int state2 : states) {
+            if (V[observation.length - 1][state2] > prob) {//最后一步v值决定最大可能隐状态序列
+                prob = V[observation.length - 1][state2];
+                state = state2;
             }
         }
 
