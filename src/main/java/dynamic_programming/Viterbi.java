@@ -35,6 +35,7 @@ package dynamic_programming;
  * <p>
  * <p>
  * 4、Viterbi算法简单实现：
+ *    吗                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        http://www.hankcs.com/nlp/hmm-and-segmentation-tagging-named-entity-recognition.html
  *    https://github.com/hankcs/Viterbi/tree/master/src/com/hankcs/algorithm
  *    算法本身理解是一回事，着手代码又是一回事，所以对于能够代码动手实现的，是很值得学习的，至少表明其深入理解了。
  * <p>
@@ -83,7 +84,7 @@ public class Viterbi {
                     }
                 }
             }
-
+            //不需要保留旧路径
             path = newpath;
         }
         //回溯路径，找到最后状态
