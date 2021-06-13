@@ -163,7 +163,7 @@ public class HMM {
         double  backResult = HMM.backward(Example.observations, Example.states, Example.start_probability, Example.transititon_probability, Example.emission_probability);
         System.out.println(backResult);
 
-        System.out.println("=====HMM 模型 第二个问题，求当前观察序列的 概率 ，使用向后算法 =====");
+        System.out.println("=====HMM 模型 第二个问题，求当前观察序列的 概率 Baum-Welch算法 =====");
 
 
 
