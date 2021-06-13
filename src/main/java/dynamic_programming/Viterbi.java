@@ -45,7 +45,7 @@ public class Viterbi {
     /**
      * 求解HMM模型
      *
-     * @param obs     观测序列
+     * @param observation     观测序列
      * @param states  隐状态
      * @param start_p 初始概率（隐状态）
      * @param trans_p 转移概率（隐状态）
@@ -57,7 +57,7 @@ public class Viterbi {
 
     public static int[] compute(int[] observation, int[] states, double[] start_p, double[][] trans_p, double[][] emit_p) {
         double[][] V = new double[observation.length][states.length]; //obs * states 记录表示 当前 观察序列情况下，最优概率是多少？路径保存在下面
-        int[][] path = new int[states.length][observation.length]; // states * obs  ,由上个概率值，计算最优路径，
+        int[][] path = new int[states.length][observation.length]; // states * obs  ,由上个概率值，计算最优路径，表示当前状态下，最优的观测序列。
 
         for (int state1 : states) {
             V[0][state1] = start_p[state1] * emit_p[state1][observation[0]];
