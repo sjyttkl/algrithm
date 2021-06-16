@@ -77,16 +77,16 @@ public class ExchangeMoneyFuc {
     // 因为本 题的递归过程可由两个变量表⽰示，所以map是⼀一张⼆二维表。map[i][j]表⽰示递归过程p(i,j)的 返回值。
     // 另外有⼀一些特别值，map[i][j]==0表⽰示递归过程p(i,j)从来没有计算过。map[i] [j]==-1表⽰示递归过程p(i,j)计算过但返回值是0。
     // 如果map[i][j]的值既不等于0也不等于-1， 记为a，则表⽰示递归过程p(i,j)的返回值为a。
+    //记忆搜索方法 时间复杂度：O（N*aim^2）
     public static int coins2(int[] arr, int aim) {
         if (arr == null || arr.length == 0 || aim < 0) {
             return 0;
 
         }
-        int[][] map = new int[arr.length + 1][aim + 1];
+        int[][] map = new int[arr.length + 1][aim + 1];//这里位置 多加了个1 ，因为后面会直接取 index+1
 
         return process2(arr, 0, aim, map);
     }
-
 
     public static int process2(int[] arr, int index, int aim, int[][] map) {
         int res = 0;
@@ -103,13 +103,44 @@ public class ExchangeMoneyFuc {
                 }
             }
         }
-        map[index][aim] = res == 0 ? -1 : res;
+        map[index][aim] = res == 0 ? -1 : res; // -1 ： 表示 计算过，但是值为0
+//        for (int i1 = 0; i1 < map.length; i1++) {
+//            for (int i2 = 0; i2 < map[0].length; i2++) {
+//                System.out.print(map[i1][i2]+" ");
+//            }
+//            System.out.println();
+//        }
         return res;
     }
 
-
-    //方法二：动态规划，非最优，时间复杂度为O（N×aim） ，N表示数组的长度
+    //方法3 ：第一个 动态规划，时间复杂度 O（N*aim^2）
     public static int coins3(int[] arr, int aim) {
+        if (arr == null || arr.length == 0 || aim < 0) {
+            return 0;
+        }
+        int[][] dp = new int[arr.length][aim + 1];
+        for (int i = 0; i < arr.length; i++) {
+            dp[i][0] = 1;//矩阵第一列，组成0的方法：1种
+        }
+        for (int j = 1; arr[0] * j <= aim; j++) {
+            dp[0][arr[0] * j] = 1;//矩阵第一行，arr[0]组成arr[0]*j的方法：1种
+        }
+        int num = 0;
+        for (int i = 1; i < arr.length; i++) {
+            for (int j = 1; j <= aim; j++) {
+                num = 0;
+                for (int k = 0; j - arr[i] * k >= 0; k++) {
+                    num += dp[i - 1][j - arr[i] * k]; //k 表示 用了几个  money，最终值为 上面的值的累加
+                }
+                dp[i][j] = num;
+            }
+        }
+        return dp[arr.length - 1][aim];
+    }
+
+
+    //方法四：动态规划，非最优，时间复杂度为O（N×aim） ，N表示数组的长度
+    public static int coins4(int[] arr, int aim) {
         if (arr == null || arr.length == 0 || aim < 0) {
             return 0;
         }
@@ -129,5 +160,23 @@ public class ExchangeMoneyFuc {
             }
         }
         return dp[arr.length - 1][aim];//arr[0...N]组成aim的方法数
+    }
+
+    //方法五：动态规划，最优，时间复杂度为O（N×aim） ，利用空间压缩原理
+    public static int coins5(int[] arr, int aim) {
+        if (arr == null || arr.length == 0 || aim < 0) {
+            return 0;
+        }
+        int[] dp = new int[aim + 1];
+        for (int j = 0; arr[0] * j <= aim; j++) {
+            dp[arr[0] * j] = 1;
+        }
+        //求一般位置的dp[i][j],由两者叠加
+        for (int i = 1; i < arr.length; i++) {
+            for (int j = 1; j <= aim; j++) {
+                dp[j] += j - arr[i] >= 0 ? dp[j - arr[i]] : 0;
+            }
+        }
+        return dp[aim];//arr[0...N]组成aim的方法数
     }
 }
