@@ -37,6 +37,13 @@ public class ExchangeMoneyFuc {
         //动态规划方式计算，非最优
         System.out.println(coins3(new int[]{5, 10, 25, 1}, 15));//6
         System.out.println(coins3(new int[]{3, 5}, 2));//0
+        //动态规划方式计算，非最优
+        System.out.println(coins4(new int[]{5, 10, 25, 1}, 15));//6
+        System.out.println(coins4(new int[]{3, 5}, 2));//0
+
+        //动态规划方式计算，最优
+        System.out.println(coins5(new int[]{5, 10, 25, 1}, 15));//6
+        System.out.println(coins5(new int[]{3, 5}, 2));//0
 
     }
 
