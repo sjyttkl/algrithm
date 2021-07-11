@@ -74,7 +74,7 @@ public class LongestOrderSequence {
         return generateLIS(arr, dp);
     }
 
-    //时间复杂度：O(NlogN)
+    //时间复杂度：O(NlogN)，这里使用二分法来优化的
     public static int[] getdp2(int[] arr) {
         int[] dp = new int[arr.length];
         int[] ends = new int[arr.length]; //保存最长递增子序列
