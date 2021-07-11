@@ -22,6 +22,7 @@ import java.util.Arrays;
 public class LongestOrderSequence {
     public static void main(String[] args) {
         int[] arr = new int[]{2, 1, 5, 3, 6, 4, 8, 9, 7};
+        System.out.println("案例:" + Arrays.toString(arr));
         lis1(arr);
         System.out.println(" -- generateLIS -- ");
         lis2(arr);
@@ -77,13 +78,15 @@ public class LongestOrderSequence {
     //时间复杂度：O(NlogN)，这里使用二分法来优化的
     public static int[] getdp2(int[] arr) {
         int[] dp = new int[arr.length];
-        int[] ends = new int[arr.length]; //保存最长递增子序列
+        int[] ends = new int[arr.length]; //保存最长递增子序列，记录记录有效序列，减少循环次数。比如：ends[3]=7 表示长度为4的递增序列中，最小结尾数变成了7
         ends[0] = arr[0];
         dp[0] = 1;
         int right = 0; //right 为ends 有效的index 区域 ，其中0-right 为有效区，right->length为无效区域
         int l = 0;
         int r = 0;
         int m = 0;
+        System.out.println("ends: "+Arrays.toString(ends));
+        System.out.println("dp:   "+Arrays.toString(dp));
         for (int i = 1; i < arr.length; i++) {
             l = 0;
             r = right;
@@ -95,9 +98,13 @@ public class LongestOrderSequence {
                     r = m - 1;
                 }
             }
-            right = Math.max(right, l);//表示需要扩展的空间
+            //这里的l 找到 比arr[i]的位置
+            right = Math.max(right, l);//表示需要扩展或者收缩的空间，
             ends[l] = arr[i];
+            System.out.println("ends: "+Arrays.toString(ends));
             dp[i] = l + 1;
+            System.out.println("dp:   "+Arrays.toString(dp));
+
         }
         System.out.println("getdp2: " + Arrays.toString(dp));
         return dp;
