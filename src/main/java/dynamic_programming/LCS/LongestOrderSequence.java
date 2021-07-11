@@ -8,7 +8,7 @@ import java.util.Arrays;
  * E-mail: songdongdong@weidian.com
  * date: 2021/7/10 14:56
  * version: 1.0
- * description:  最长公共子序列（longest common sequence）
+ * description:  最长递增子序列（longestOrdersequence）
  * 即一个给定的序列的子序列，就是将给定序列中零个或多个元素去掉之后得到的结果
  * 注意区分字序列和字串的关系：https://blog.csdn.net/hrn1216/article/details/51534607
  * <p>
@@ -19,11 +19,12 @@ import java.util.Arrays;
  * 要求：
  * 如果arr的长度为N，请实现 时间复杂度为O(NlogN)的方法
  */
-public class LongestCommonSequence {
+public class LongestOrderSequence {
     public static void main(String[] args) {
         int[] arr = new int[]{2, 1, 5, 3, 6, 4, 8, 9, 7};
         lis1(arr);
-//        System.out.println(Arrays.toString(getdp1(arr)));
+        System.out.println(" -- generateLIS -- ");
+        lis2(arr);
     }
 
     //时间复杂度为）O(N^2)
@@ -45,14 +46,15 @@ public class LongestCommonSequence {
     public static int[] generateLIS(int[] arr, int[] dp) {
         int len = 0;
         int index = 0;
+        //这里是获得最大递增序列的位置，和index
         for (int i = 0; i < dp.length; i++) {
             if (dp[i] > len) {
                 len = dp[i];
                 index = i;
             }
         }
-        int[] lis = new int[len];
-        lis[--len] = arr[index];
+        int[] lis = new int[len];//这里是存储
+        lis[--len] = arr[index];//这里是存储有序子序列
         for (int i = index; i >= 0; i--) {
             if (arr[i] < arr[index] && dp[i] == dp[index] - 1) {
                 lis[--len] = arr[i];
@@ -70,5 +72,40 @@ public class LongestCommonSequence {
         }
         int[] dp = getdp1(arr);
         return generateLIS(arr, dp);
+    }
+
+    public static  int [] getdp2(int[] arr){
+        int [] dp = new int[arr.length];
+        int [] ends=  new int[arr.length];
+        ends[0] = arr[0];
+        dp[0] = 1;
+        int right = 0;
+        int l =0;
+        int r = 0;
+        int m = 0;
+        for(int i=1 ;i<arr.length ;i++){
+            l = 0;
+            r =right;
+            while(l <=r){
+                m = ( l +r) /2;
+                if(arr[i]> ends[m]){
+                    l = m + 1;
+                }else{
+                    r = m -1;
+                }
+            }
+            right = Math.max(right,l);
+            ends[l] = arr[i];
+            dp[i] = l +1;
+        }
+        System.out.println("getdp2: " + Arrays.toString(dp));
+        return dp;
+    }
+    public static int [] lis2(int [] arr){
+        if(arr == null || arr.length ==0){
+            return null;
+        }
+        int [] dp = getdp2(arr);
+        return generateLIS(arr,dp);
     }
 }
