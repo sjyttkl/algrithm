@@ -74,38 +74,40 @@ public class LongestOrderSequence {
         return generateLIS(arr, dp);
     }
 
-    public static  int [] getdp2(int[] arr){
-        int [] dp = new int[arr.length];
-        int [] ends=  new int[arr.length];
+    //时间复杂度：O(NlogN)
+    public static int[] getdp2(int[] arr) {
+        int[] dp = new int[arr.length];
+        int[] ends = new int[arr.length]; //保存最长递增子序列
         ends[0] = arr[0];
         dp[0] = 1;
-        int right = 0;
-        int l =0;
+        int right = 0; //right 为ends 有效的index 区域 ，其中0-right 为有效区，right->length为无效区域
+        int l = 0;
         int r = 0;
         int m = 0;
-        for(int i=1 ;i<arr.length ;i++){
+        for (int i = 1; i < arr.length; i++) {
             l = 0;
-            r =right;
-            while(l <=r){
-                m = ( l +r) /2;
-                if(arr[i]> ends[m]){
+            r = right;
+            while (l <= r) { //使用二分法找到最大那个数
+                m = (l + r) / 2;
+                if (arr[i] > ends[m]) {//表示：有效区 小于当前值，则递增序列可以扩展m+1, l 就是有效长度
                     l = m + 1;
-                }else{
-                    r = m -1;
+                } else {
+                    r = m - 1;
                 }
             }
-            right = Math.max(right,l);
+            right = Math.max(right, l);//表示需要扩展的空间
             ends[l] = arr[i];
-            dp[i] = l +1;
+            dp[i] = l + 1;
         }
         System.out.println("getdp2: " + Arrays.toString(dp));
         return dp;
     }
-    public static int [] lis2(int [] arr){
-        if(arr == null || arr.length ==0){
+
+    public static int[] lis2(int[] arr) {
+        if (arr == null || arr.length == 0) {
             return null;
         }
-        int [] dp = getdp2(arr);
-        return generateLIS(arr,dp);
+        int[] dp = getdp2(arr);
+        return generateLIS(arr, dp);
     }
 }
