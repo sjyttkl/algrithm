@@ -16,7 +16,7 @@ package dynamic_programming;
 public class Fibonacci {
 
     public static void main(String[] args) {
-        System.out.println(fibonacci3(10));
+        System.out.println(fibonacci3(20));
     }
 
     //普通递归求解,时间复杂度O(n2),内存会溢出
@@ -74,7 +74,7 @@ public class Fibonacci {
         }
         int[][] tmp = m;
         for (; p != 0; p >>= 1) {
-            if ((p & 1) != 0) {//p连续右移，只有当2的次方上是1时才需要累乘
+            if ((p & 1) != 0) {//p连续右移，只有当2的次方上是1时才需要累乘，当2次方不是1的时候，则 直接把对应的结果相乘就行了。
                 res = muliMatrix(res, tmp);
             }
             tmp = muliMatrix(tmp, tmp);//p连续右移，只有当2的次方上是0时 只需要把模板进行累乘就行了。
