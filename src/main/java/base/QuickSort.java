@@ -54,14 +54,14 @@ public class QuickSort {
         System.out.println("============左程云方式的快排====题目三：下边讲解我们的改进快排================");
         Integer[] arr4 = {1, 2, 7, 5, 4, 3, 9, 2, 7};
         System.out.print("排序前     ");
-        for (int i = 0; i < arr4.length; i++) {
-            System.out.print(arr4[i] + "  ");
+        for (Integer value : arr4) {
+            System.out.print(value + "  ");
         }
         System.out.println();
         quickSort4(arr4, 0, arr.length - 1);
         System.out.print("排序后     ");
-        for (int i = 0; i < arr4.length; i++) {
-            System.out.print(arr4[i] + " ");
+        for (Integer integer : arr4) {
+            System.out.print(integer + " ");
         }
     }
     /**

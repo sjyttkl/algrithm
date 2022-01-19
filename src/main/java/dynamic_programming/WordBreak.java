@@ -2,6 +2,7 @@ package dynamic_programming;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -29,13 +30,21 @@ import java.util.Map;
  * f(1) 第一个字符
  */
 public class WordBreak {
+    public static void main(String[] args) {
+        String str = "leetcode";
+        ArrayList list = new ArrayList<String>();
+        list.add("leet");
+        list.add("code");
+        System.out.println(wordBreak(str, (ArrayList) list));
+    }
+
     public static boolean wordBreak(String str, ArrayList dict) {
         if (str.isEmpty() || dict.isEmpty()) {
             return false;
         }
         int n = str.length();
         boolean[] can_break = new boolean[n + 1];
-        for(int i=0;i<can_break.length;i++){
+        for (int i = 0; i < can_break.length; i++) {
             can_break[i] = false;
         }
         //初始化

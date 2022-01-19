@@ -28,7 +28,6 @@ public class LongestOrderSequence {
         lis2(arr);
     }
 
-    //时间复杂度为）O(N^2)
     public static int[] getdp1(int[] arr) {
         int[] dp = new int[arr.length];
         for (int i = 0; i < arr.length; i++) {
@@ -48,7 +47,7 @@ public class LongestOrderSequence {
         int len = 0;
         int index = 0;
         //这里是获得最大递增序列的位置，和index
-        for (int i = 0; i < dp.length; i++) {
+        for (int i = 0; i < dp.length; i++) { //[1, 1, 2, 2, 3, 3, 4, 5, 4]
             if (dp[i] > len) {
                 len = dp[i];
                 index = i;
@@ -85,8 +84,8 @@ public class LongestOrderSequence {
         int l = 0;
         int r = 0;
         int m = 0;
-        System.out.println("ends: "+Arrays.toString(ends));
-        System.out.println("dp:   "+Arrays.toString(dp));
+        System.out.println("ends: " + Arrays.toString(ends));
+        System.out.println("dp:   " + Arrays.toString(dp));
         for (int i = 1; i < arr.length; i++) {
             l = 0;
             r = right;
@@ -101,9 +100,9 @@ public class LongestOrderSequence {
             //这里的l 找到 比arr[i]的位置
             right = Math.max(right, l);//表示需要扩展或者收缩的空间，
             ends[l] = arr[i];
-            System.out.println("ends: "+Arrays.toString(ends));
+            System.out.println("ends: " + Arrays.toString(ends));
             dp[i] = l + 1;
-            System.out.println("dp:   "+Arrays.toString(dp));
+            System.out.println("dp:   " + Arrays.toString(dp));
 
         }
         System.out.println("getdp2: " + Arrays.toString(dp));

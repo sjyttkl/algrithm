@@ -29,10 +29,10 @@ public class MinPathSum {
         int col = nums[0].length;
         int[][] dp = new int[row][col];
         dp[0][0] = nums[0][0];
-        for (int i = 1; i < row; i++) {
+        for (int i = 1; i < row; i++) {//第一列
             dp[i][0] = dp[i - 1][0] + nums[i][0];
         }
-        for (int j = 1; j < col; j++) {
+        for (int j = 1; j < col; j++) { //第一行
             dp[0][j] = dp[0][j - 1] + nums[0][j];
         }
         for (int i = 1; i < row; i++) {

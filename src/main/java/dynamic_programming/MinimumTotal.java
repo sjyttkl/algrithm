@@ -1,5 +1,7 @@
 package dynamic_programming;
 
+import java.util.Arrays;
+
 /**
  * Create with: dynamic_programming
  * author: sjyttkl
@@ -30,23 +32,31 @@ package dynamic_programming;
  * 上面是自顶向下的，能否可以自底向上进行,，竟然也可以，这里还不要考虑两个边界的情况，当然上面的其实也可以不考虑的，可以认为是0，这里：triangle[i][j] +=min(triangle[i+1][j] , triangle[i+1][j+1])
  */
 public class MinimumTotal {
+    public static void main(String[] args) {
+        int[][] triangle = {{2}, {3, 4}, {6, 5, 7}, {4, 1, 8, 3}};
+        System.out.println(minimumTotal(triangle));
+        int[][] triangle2 = {{2}, {3, 4}, {6, 5, 7}, {4, 1, 8, 3}};
+
+        System.out.println(minimumTotal2(triangle2));
+    }
+
     /**
      * @param triangle: a list of lists of integers.
      * @return: An integer, minimum path sum.
      */
 //    自顶向下
-    public int minimumTotal(int[][] triangle) {
+    public static int minimumTotal(int[][] triangle) {
         // write your code here
         if (triangle.length == 1 && triangle[0].length == 1) {
             return triangle[0][0];
         }
         int minnum = Integer.MAX_VALUE;
 
-        for (int i = 1; i < triangle.length; i++) {//第一行开始
+        for (int i = 1; i < triangle.length; i++) {//第二行开始
             for (int j = 0; j < triangle[i].length; j++) {
                 if (j == 0) {//左边界
                     triangle[i][j] += triangle[i - 1][j];
-                } else if (j == triangle[i].length - 1) {//有边界
+                } else if (j == triangle[i].length - 1) {//右边界
                     triangle[i][j] += triangle[i - 1][j - 1];
                 } else {//中间
                     triangle[i][j] += Math.min(triangle[i - 1][j], triangle[i - 1][j - 1]);
@@ -61,9 +71,9 @@ public class MinimumTotal {
     /**
      * @param triangle: a list of lists of integers.
      * @return: An integer, minimum path sum.
-    */
+     */
     //自底向上
-    public int minimumTotal2(int[][] triangle) {
+    public static int minimumTotal2(int[][] triangle) {
         // write your code here
         if (triangle.length == 1 && triangle[0].length == 1)
             return triangle[0][0];

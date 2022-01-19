@@ -22,8 +22,12 @@ import static dynamic_programming.Fibonacci.matrixPower;
  * c(3) = 3
  */
 public class Cow {
+    public static void main(String[] args) {
+        System.out.println(c1(5));
+    }
+
     //时间复杂度O(2^n)
-    public int c1(int n) {
+    public static int c1(int n) {
         if (n < 1) {
             return n;
         }
