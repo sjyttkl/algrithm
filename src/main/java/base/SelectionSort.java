@@ -10,20 +10,16 @@ package base;
  * 时间复杂度O(N^2)，额外空间复杂度O(1)
  */
 public class SelectionSort {
-    public static void selectionSort(int[] arr)
-    {
-        if(arr==null || arr.length <2)
-        {
-            return ;
+    public static void selectionSort(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return;
         }
-        for(int i=0;i<arr.length-1;i++)
-        {
+        for (int i = 0; i < arr.length - 1; i++) {
             int minIndex = i;
-            for(int j=i+1;j<arr.length;j++)
-            {
-                minIndex = arr[j]<arr[minIndex]? j:minIndex;
+            for (int j = i + 1; j < arr.length; j++) {
+                minIndex = arr[j] < arr[minIndex] ? j : minIndex;
             }
-            swap(arr,i,minIndex);
+            swap(arr, i, minIndex);
         }
     }
 
@@ -33,16 +29,15 @@ public class SelectionSort {
         arr[i] = arr[j];
         arr[j] = temp;
     }
-    public static void show(int [] arr)
-    {
-        for (int i = 0; i < arr.length; i++){
-          System.out.print(arr[i]+" ");
-  }
+
+    public static void show(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
     }
 
-    public static void main(String [] args)
-    {
-        int arr[] = {6,4,2,5,8,9};
+    public static void main(String[] args) {
+        int arr[] = {6, 4, 2, 5, 8, 9};
         selectionSort(arr);
         show(arr);
     }
