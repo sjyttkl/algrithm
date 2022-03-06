@@ -12,12 +12,14 @@ import java.util.Arrays;
  * 思想：每当一趟匹配过程中出现字符比较不等，不需要回溯i指针，
  * 而是利用已经得到的“部分匹配”的结果将模式向右“滑动”尽可能远 的一段距离后，继续进行比较。
  * * 时间复杂度O(n+m)
+ * KMP算法的核心是利用匹配失败后的信息,尽量减少模式串与主串的匹配次数以达到快速匹配的目的。具体实现就是通过一个next()函数实现,函数本身包含了模式串的局部匹配信息
  */
 public class KMP {
     public static void main(String[] args) {
         String str = "ababcabcacbab";
         char[] str_chars = str.toCharArray();
         String pattern = "abcac";
+//        String pattern = "abcabcabcabc";
         char[] pattern_chars = pattern.toCharArray();
         int[] next = new int[pattern_chars.length];
         getNext(pattern_chars, next);
@@ -59,13 +61,13 @@ public class KMP {
                 ++j;
                 //下面的这一对 if--else 是对传统的kmp进行改进的, 下面的 1 和2,取一个就行了
                 //1,
-                if (chars[i] != chars[j]) {
-                    next[i] = j;
-                } else {
-                    next[i] = next[j];
-                }
+//                if (chars[i] != chars[j]) {
+//                    next[i] = j;
+//                } else {
+//                    next[i] = next[j];
+//                }
                 //2,
-//                next[i] = j;
+                next[i] =  j;
 
             } else {
                 j = next[j];

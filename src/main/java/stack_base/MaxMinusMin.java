@@ -3,23 +3,25 @@ package stack_base;
 import java.util.LinkedList;
 
 /**
- * Create with: intermediate
+ * Create with: MaxMinusMin
  * author: sjyttkl
  * E-mail: 695492835@qq.com
  * date: 2020/1/16 1:08
  * version: 1.0
- * description:  最大值减去最小值    结果要  小与或等于num的子数组的数量
+ * description: 问题：给定数组arr和整数num，共返回有多少个子数组满足  <= num
+ * 最大值减去最小值    结果要  小与或等于num的子数组的数量
  * 数组长度N    时间复杂度O(N)
  */
 public class MaxMinusMin {
     public static void main(String[] args) {
 //        Scanner sc = new Scanner(System.in);
         int n = 5;// sc.nextInt();
-        int num = 2;// sc.nextInt();
-        int[] arr = new int[n];
-        for (int i = 0; i < n; i++) {
-            arr[i] = i;
-        }
+        int num = 5;// sc.nextInt();
+//        int[] arr = new int[n];
+//        for (int i = 0; i < n; i++) {
+//            arr[i] = i;
+//        }
+        int [] arr = {2,3,1,6,8,0};
         System.out.println(getNum(arr, num));
     }
 
@@ -38,22 +40,27 @@ public class MaxMinusMin {
                     qmax.pollLast();//剔除这个元素
                 }
                 qmax.addLast(R);
+                System.out.println("qmax"+qmax);
                 while (!qmin.isEmpty() && arr[qmin.peekLast()] >= arr[R]) {
                     qmin.pollLast();
                 }
                 qmin.addLast(R);
+                System.out.println("qmin"+qmin);
+
                 if (arr[qmax.peekFirst()] - arr[qmin.peekFirst()] > num) {
                     break;//一旦找到右边 最大值，则R不动，继续滑动左边的值
                 }
                 R++;
             }//while
+
+            System.out.println("------");
             cnt += R - L; //记录这次 子数组的长度。
             L++;//左边窗口向左走一步
             if (qmax.peekFirst() < L) {//防止最大值位置 超过 左边窗口超过  右边窗口
                 qmax.pollFirst();
             }
             if (qmin.peekFirst() < L) {//防止最小值位置 超过 左边窗口超过  右边窗口
-                qmin.peekFirst();
+                qmin.pollFirst();
             }
         }
         return cnt;
