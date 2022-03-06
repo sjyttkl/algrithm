@@ -38,7 +38,7 @@ public class longestCommonSubstring {
             for (int j = 0; j < chars2.length; j++) {
                 if (dp[i][j] > max) {
                     end = i;
-                    max = dp[i][j];
+                    max = dp[i][j]; // 长度
                 }
             }
 
@@ -83,8 +83,8 @@ public class longestCommonSubstring {
         char[] chars2 = str2.toCharArray();
         int row = 0; //斜线开始位置的行
         int col = chars2.length - 1; //斜线开始位置的列
-        int max = 0;//记录最大长度
-        int end = 0;//最大长度更新时，需要记录子串的结尾位置
+        int maxLength = 0;//记录最大长度
+        int endIndex = 0;//最大长度更新时，需要记录子串的结尾位置
         while (row < chars1.length) { //每行进行遍历
             int i = row;
             int j = col;
@@ -97,12 +97,12 @@ public class longestCommonSubstring {
                     len++;
                 }
                 //记录最大值，以及结束字符的位置
-                if (len > max) {
-                    end = i;
-                    max = len;
+                if (len > maxLength) {
+                    endIndex = i;
+                    maxLength = len;
                 }
-                i++;
-                j++;
+                i++; //斜线 行
+                j++; //斜线 列
             }
             if (col > 0) {//斜线开始位置的列先向左移动
                 col--;
@@ -112,7 +112,7 @@ public class longestCommonSubstring {
 
         }
 
-        return str1.substring(end - max + 1, end + 1);
+        return str1.substring(endIndex - maxLength + 1, endIndex + 1);
 
     }
 

@@ -42,7 +42,6 @@ public class LongestOrderSequence {
         System.out.println("getdp1: " + Arrays.toString(dp));
         return dp;
     }
-
     public static int[] generateLIS(int[] arr, int[] dp) {
         int len = 0;
         int index = 0;
