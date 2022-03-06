@@ -68,7 +68,7 @@ public class longestCommonSequence {
         int[][] dp = get_dp(c1, c2);
         int m = c1.length - 1;
         int n = c2.length - 1;
-        char[] result = new char[dp[m][n]];
+        char[] result = new char[dp[m][n]]; //dp[m][n]这里表示长度
         int index = result.length - 1;
         while (index >= 0) {
             if (n > 0 && dp[m][n] == dp[m][n - 1]) {//向左移动
