@@ -19,21 +19,18 @@ public class StackSort {
         s.push(4);
         s.push(1);
         System.out.println("排序前：  ");
-        for (int i = 0; i < s.size(); i++) {
-            System.out.print(s.get(i) + " ");
-        }
-        System.out.println();
+        System.out.println(s);
         s = sortStackbyStack(s);
         System.out.println("排序后：  ");
-        while (!s.isEmpty()) {
-            System.out.print(s.pop() + " ");
-        }
+        System.out.println(s);
+
     }
+
     public static Stack<Integer> sortStackbyStack(Stack<Integer> stack) {
         Stack<Integer> help = new Stack<Integer>();
         while (!stack.isEmpty()) {
             int cur = stack.pop();
-            while (!help.isEmpty() && cur > help.peek()) {
+            while (!help.isEmpty() && cur > help.peek()) { //每次找到比help数大的值
                 stack.push(help.pop());
             }
 //    		 help.push(stack.pop());  这个地方要是写了就pop了2次，显然不正确
