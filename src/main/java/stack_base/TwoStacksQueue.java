@@ -22,7 +22,8 @@ public class TwoStacksQueue {
     public void add(int pushInt) {
         stackpush.push(pushInt);
     }
-//出队列
+
+    //出队列
     public int poll() {
         if (stackPop.empty() && stackpush.empty()) {
             throw new RuntimeException("Queue is empty!");

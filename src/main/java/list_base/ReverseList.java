@@ -49,6 +49,7 @@ public class ReverseList {
         doubleNode5.pre = doubleNode4;
 
         Node reverNode = reverseList(node);
+        System.out.println("翻转单链表");
         while (reverNode != null) {
             System.out.println(reverNode.value);
             reverNode = reverNode.next;

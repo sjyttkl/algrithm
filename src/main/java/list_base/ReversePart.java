@@ -30,6 +30,7 @@ public class ReversePart {
         Node fpre = null;
         Node tpos = null;
         Node curNode = head;
+        //找到开始位置和尾部位置
         while(curNode!=null){
             len ++;
             fpre =len==from -1?curNode :fpre;

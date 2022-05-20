@@ -13,7 +13,7 @@
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>[24.1.1,)</version>
-            <scope>provided</scope>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.jetbrains</groupId>

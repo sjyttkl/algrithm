@@ -13,8 +13,7 @@ package list_base;
  * c为从相遇点再走c步到达入口点，L为整个链表的长度。
  */
 public class FindLoopPort {
-    public  static void main(String args[])
-    {
+    public static void main(String args[]) {
         Node node = new Node(0);
         Node node1 = new Node(1);
         Node node2 = new Node(2);
@@ -32,6 +31,7 @@ public class FindLoopPort {
         node6.next = node4;
         System.out.println(findLoopPort(node).value);
     }
+
     public static Node findLoopPort(Node head) {
         Node slow = head;
         Node fast = head;

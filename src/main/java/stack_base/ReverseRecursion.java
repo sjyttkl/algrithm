@@ -40,12 +40,11 @@ public class ReverseRecursion {
         stack.push(2);
         stack.push(3);
         stack.push(4);
-
+        System.out.println(stack);
         reverse(stack);
         System.out.println();
-        while (!stack.isEmpty()) {
-            System.out.print(stack.pop() + " ");
-        }
+        System.out.println(stack);
+
     }
 
 }

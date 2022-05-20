@@ -2,6 +2,9 @@ package Examle;
 
 import list_base.Node;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Create with: Examle
  * author: sjyttkl
@@ -12,7 +15,17 @@ import list_base.Node;
  */
 public class Example {
     public static void main(String args[]){
+           System.out.println(SetRe());
+    }
 
+    public static String SetRe(){
+        Set<String> set  = new HashSet<>();
+       
+
+        for (String se : set){
+            return se;
+        }
+        return "";
     }
     public static Node reversePart(Node head, int from, int to) {
         int len = 0;
