@@ -7,6 +7,7 @@ package dynamic_programming;
  * date: 2020/7/27 11:14
  * version: 1.0
  * description: https://blog.csdn.net/fjssharpsword/article/details/72285210?locationNum=7&fps=1
+ * https://blog.csdn.net/qq_44766883/article/details/113355126?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-1-113355126-blog-123123660.pc_relevant_landingrelevant&spm=1001.2101.3001.4242.2&utm_relevant_index=4
  * <p>
  * 1、隐马尔可夫模型HMM
  *    学习算法，看中文不如看英文，中文喜欢描述的很高深。
@@ -109,13 +110,12 @@ public class HMM {
      * 计算得到最大概率的隐状态，然后保存最佳状态转移位置。对于每个观察值，先计算对应的可能的隐状态
      * 在当前 观察序列 的情况下，最优的隐藏序列是多少？
      */
-
     public static int[] viterbi(int[] observation, int[] states, double[] start_p, double[][] trans_p, double[][] emit_p) {
         double[][] V = new double[observation.length][states.length]; //obs * states 记录表示 当前 观察序列情况下，最优概率是多少？路径保存在下面
         int[][] path = new int[states.length][observation.length]; // states * obs  ,由上个概率值，计算最优路径，表示当前状态下，最优的观测序列。
 
         for (int state1 : states) {
-            V[0][state1] = start_p[state1] * emit_p[state1][observation[0]];
+            V[0][state1] = start_p[state1] * emit_p[state1][observation[0]]; //初始概率 * 发射概率，当前表示的是 在  0位置的观测点
             path[state1][0] = state1;
         }
         //依次每个观察序列，并计算当前观察序列值 下，每个隐藏层的最大概率，最终记录最优路径

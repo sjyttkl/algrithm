@@ -12,7 +12,7 @@ package dynamic_programming.LCS;
  * 例如：
  * str1="1A2C3dD4B56" ， str2="B1D23CA45B6A"
  * "123456"或者"12C4B6" 都是公共子序列，返回哪一个都行
- *
+ * <p>
  * 思路：https://blog.csdn.net/hrn1216/article/details/51534607
  */
 public class longestCommonSequence {
